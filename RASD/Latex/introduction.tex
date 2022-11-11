@@ -1,0 +1,205 @@
+\section{Purpose}
+\label{sec:purpose}%
+Widespread electrification of transport is the most efficient way to reach Europe’s climate objectives for the sector and electric charging is the main asset to overcome the obstacles of the take-up of electric vehicles (EVs). EVs can reduce CO2 by an estimated annual 600,000 tons by 2030, going towards a carbon neutral Europe and the importance of this aim raises the problem of having efficient systems that manage the charging services. The e-Mall is thought as an all-encompassing application that oversees the entire process from the user interaction to the effective recharge of the EV's battery.\\
+
+The main goal we want to achieve with the e-Mall software is to help the end users (electric vehicle drivers) to have a better access to recharge and to be able to book a charging point in order to avoid interference with his daily plans. Another important purpose of the system is to safeguard not only the users but also the providers of the service and this is made thought privacy agreements and the actual interaction that guarantees to supervise the both interested parts, in order to get the best possible service and pay for it accordingly, having also a technical and economic exploitation of the charging infrastructures. \\
+
+In this context there is an increase in the requested electric energy, but large amounts of power in short periods would require investments in the reinforcement of the distribution networks, which have not been designed to accommodate such load. It becomes necessary to introduce new systems and solutions to optimize the operation of distribution networks and we can identify the DSOs as important actors that have to monitor the networks in order to have a safe and controlled supply of the energy and manage faults in the assets. The DSOs communicate with the e-Mall, and in particular with the CPMS modules that decide from where to acquire energy in order to satisfy as well as possible the CPOs economical interests.
+
+\newcounter{gc}
+\setcounter{gc}{1}
+\newcommand{\gcnt}{\thegc\stepcounter{gc}}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|p{0.9\linewidth}|}
+     \hline
+     \textbf{Goal} & \textbf{Description} \\
+     \hline
+     G\gcnt & The end user is able to identify the charging stations nearby \\
+     \hline
+     G\gcnt & The end user is able to visualize the tariffs of the charging stations \\
+     \hline
+     G\gcnt & The end user is able to visualize any special offer available at the charging station \\
+     \hline
+     G\gcnt & The end user is able to book a charge in a specific charging station for a certain time-frame\\
+     \hline
+     G\gcnt & The end user is able to start the charging process at a certain station \\
+     \hline
+     G\gcnt & The end user is able to pay for the obtained service \\
+     \hline
+     G\gcnt & The CPO can decide from which DSO to acquire energy \\
+     \hline 
+     G\gcnt & The CPO can decide the cost of charging \\
+     \hline 
+     G\gcnt & The CPO can set special offers \\
+     \hline 
+     G\gcnt & The CPO can decide whether to store or not energy in batteries \\
+     \hline 
+     G\gcnt & The CPO can decide whether to use the energy available in the batteries \\
+     \hline 
+\end{tabular}
+    \caption{Goals}
+    \label{tab:Goals}
+\end{table}
+
+
+\section{Scope}
+\label{sec:Scope}%
+\newcounter{wp}
+\setcounter{wp}{1}
+\newcommand{\wpcount}{\thewp\stepcounter{wp}}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|p{0.725\linewidth}|}
+     \hline
+     \textbf{World phenomena} & \textbf{Description} \\
+     \hline
+     WP\wpcount & The end user wants to charge the EV's battery \\
+     \hline
+     WP\wpcount & The end user wants to plan where and when to charge the EV's battery \\
+     \hline
+     WP\wpcount & The prices for energy often vary in real world economy \\ 
+     \hline
+     WP\wpcount & The providers of energy, as marketing strategy, have special offers during certain time periods.\\
+     \hline
+     WP\wpcount & The providers of the charging service make special offers during certain time periods.\\
+     \hline
+     WP\wpcount & All vehicles have an integrated inverter that converts AC electricity to DC \\
+     \hline
+     WP\wpcount & Some type of chargers have an integrated inverter that converts AC electricity to DC. They supply the EV directly with DC current \\
+     \hline
+     WP\wpcount & A charging of type X, provides electricity in mode C and is given through Z connectors \\
+     \hline
+\end{tabular}
+    \caption{World Phenomena}
+    \label{tab:World Phenomena}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|p{0.725\linewidth}|}
+     \hline
+     \textbf{World phenomena CPO} & \textbf{Description} \\
+     \hline
+     WP\wpcount & A charging station is owned and managed by one CPO \\
+     \hline
+     WP\wpcount & A CPO owns and manages one or more charging stations \\
+     \hline
+     WP\wpcount & A charging station may be equipped with batteries \\
+     \hline
+     WP\wpcount & \textit{Charging stations equipped with batteries grant more flexibility to CPOs on how to choose between the energy stored in the batteries and the one offered by DSOs} \\
+     \hline
+     WP\wpcount & Low voltage (3.7 - 11 kW) chargers need more time to charge the battery \\
+     \hline
+     WP\wpcount & Medium voltage (22-90 kW) chargers need less time to recharge a battery of capacity C than a low voltage charger \\
+     \hline
+     WP\wpcount & High voltage (> 90 kW) chargers need less time to recharge a battery of capacity C than a medium voltage charger \\
+     \hline
+     WP\wpcount & Batteries can only be charged with direct current (DC) electric power \\
+     \hline
+     WP\wpcount & Given a continuous supply of power W, and a battery with finite capacity C, than the charging time T is finite. \\
+     \hline
+\end{tabular}
+    \caption{World Phenomena}
+    \label{tab:World Phenomena}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|p{0.725\linewidth}|}
+     \hline
+     \textbf{World phenomena DSO} & \textbf{Description} \\
+     \hline
+     WP\wpcount & The DSOs provide energy to a charging station \\
+     \hline
+     WP\wpcount & Most electricity is delivered from the power grid as alternating current (AC) \\
+     \hline
+     WP\wpcount & During the day the electric power supplied to the station can vary\\
+     \hline
+     WP\wpcount & During the day a short-duration reduction in the voltage supplied to the electrical power systems may occur due to high current demand or faults in the system.\\
+     \hline
+     WP\wpcount & During the day a momentary increase in voltage may occur. This may happen when a heavy load turns off in a power system.\\
+     \hline
+\end{tabular}
+    \caption{World Phenomena}
+    \label{tab:World Phenomena}
+\end{table}
+
+
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|p{0.41\linewidth}|l|l|}
+     \hline
+     \textbf{Shared phenomena} & \textbf{Description} & \textbf{Controller} & \textbf{Observer} \\
+     \hline
+     SP1 & The eMall notifies the user when the charging process is finished & eMall & user\\
+     \hline
+     SP2 & The end user creates an account & user & eMall\\
+     \hline
+     SP3 & The end user logs in & user & eMall\\
+     \hline
+     SP4 & The end user in order to register inserts in the mobile app of the eMall the personal data (name, surname, payment details) & user & eMall \\
+     \hline
+     SP5 & The end user inserts in the mobile app of the eMall specifications about its vehicles (type of vehicle, inlet type) & user & eMall\\
+     \hline
+     SP6 & The end user accepts the terms of service in order to use the eMall & user & eMall\\
+     \hline
+     SP7 & The end user shares its location with the eMall & user & eMall\\
+     \hline
+     SP8 & The end user confirms the payment from the mobile application of the eMall & user & eMall \\
+     \hline
+     SP9 & The end user deletes previously inserted EVs from its account & user & eMall\\
+     \hline
+     SP10 & The end user updates the specifications of the EVs on its account & user & eMall \\
+     \hline
+     SP11 & The end user adds a new EV to its account & user & eMall \\
+     \hline
+\end{tabular}
+    \caption{Shared Phenomena}
+    \label{tab:Shared Phenomena}
+\end{table}
+
+\section{Definitions, Acronyms, Abbreviations}
+\label{sec:Definitions, Acronyms, Abbreviations}%
+\subsection{Abbreviations}
+\begin{itemize}
+    \item \textbf{eMall}: e-Mobility for all
+    \item \textbf{CPMS}: Charging Point Management System
+    \item \textbf{CPO}: Charge Point Entity
+    \item \textbf{eMSP}: Electric Mobility Service Providers
+    \item \textbf{DMS}: Distribution Management System
+    \item \textbf{DSO}: Distribution System Operator
+    \item \textbf{EV}: Electric Vehicle
+    \item \textbf{EVSE}: Electric Vehicle Supply Equipment
+    \item \textbf{HV}: High Voltage
+    \item \textbf{LV}: Low Voltage
+    \item \textbf{MV}: Medium Voltage
+    \item \textbf{SCADA}: Supervisory Control and Data Acquisition
+    \item \textbf{SCM}: Smart Chargingn Management 
+    \item \textbf{OMS}: Outage Management System
+\end{itemize}
+
+\subsection{Definitions}
+\begin{itemize}
+    \item \textbf{DSO}: typically the entity responsible for the operation and management of distribution networks – High, Medium and Low Voltage networks. For this purpose, the DSO typically owns systems such as Supervisory and Control Data Acquisition (SCADA)/ Distribution Management System (DMS) for the monitoring and general overview of the state of the network. It also owns other systems such as the Outage Management System (OMS) and Work Force Management System (WFMS) for addressing the network operation problems related with the continuity and quality of service.
+    \item \textbf{CPO}: entity that technically manages all the EV infrastructure assets, depending of existing country regulation – this role can be assured by the DSO or other entity.
+    \item \textbf{eMSP}: is the entity that can explore the economic side of the EV charging infrastructure, namely by selling energy for charging purposes.
+    \item \textbf{CPMS}: is a software system that manages the charge point infrastructure – can manage the technical and economic aspects of the charging infrastructures.
+    \item  \textbf{EV Driver}: person or entity who owns an EV car and can use the public or private facilities for charging purposes.
+    \item \textbf{EVSE}: responsible for the charging of the EV. It is an equipment that is able to charge EV batteries with AC or DC loads and with different rated powers depending on the type of equipment.
+    \item  \textbf{Private parking}: can be a condominium, industry or other entity who has private owned EV
+    \item \textbf{Voltage sag}: a short-duration reduction in voltage of an electric power distribution system. It can be caused by high current demand or fault current elsewhere in the system.
+    \item \textbf{Voltage swell}: the opposite of voltage sag. Voltage swell, which is a momentary increase in voltage, happens when a heavy load turns off in a power system.
+    \item \textbf{Socket outlet}: the port on the electric vehicle supply equipment (EVSE) that supplies charging power to the vehicle
+    \item \textbf{Plug}: the end of the flexible cable that interfaces with the socket outlet on the EVSE.
+    \item \textbf{Cable}: a flexible bundle of conductors that connects the EVSE with the electric vehicle
+    \item \textbf{Connector}: the end of the flexible cable that interfaces with the vehicle inlet
+    \item \textbf{Vehicle inlet}: the port on the electric vehicle that receives charging power
+\end{itemize}
+
+\section{Reference Documents}
+\label{sec:Reference Documents}%
+
+\section{Document Structure}
+\label{sec:Document Structure}%
