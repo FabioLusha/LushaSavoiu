@@ -9,23 +9,29 @@
 
 \section{Assumptions, dependencies and constraints}
 \label{sec:Assumptions, dependencies and constraints}%
+\newcounter{ac}
+\setcounter{ac}{1}
+\newcommand{\acount}{\theac\stepcounter{ac}}
 \begin{table}[h!]
     \centering
     \begin{tabular}{|l|p{0.725\linewidth}|}
      \hline
      \textbf{Assumptions} & \textbf{Description} \\
      \hline
-     A1 & The end user has internet connection \\
+     A\acount & The end user has internet connection \\
      \hline
-     A2 & The end user has a mobile phone with an integrated GPS module \\
+     A\acount & The end user has a mobile phone with an integrated GPS module \\
      \hline
-     A3 & The end user has the mobile application of the eMSP installed on his mobile phone \\
+     A\acount & The end user has the mobile application of the eMSP installed on his mobile phone \\
      \hline
-     A4 & The CPMS shares the location of the charging station to the eMSP through APIs\\
+     A\acount & The CPMS shares the location of the charging station to the eMSP through APIs\\
      \hline
-     A5 & The end user payment from the mobile app is handled by external APIs.\\
+     A\acount & The end user payment from the mobile app is handled by external APIs.\\
      \hline
-     
+     A\acount & The EVD that creates an account inserts the personal data and the EVs specifications during registration \\
+     \hline
+     A\acount & The non registered EVD inserts the EVs specifications and payment details during the booking phase \\
+     \hline
 \end{tabular}
     \caption{Assumptions}
     \label{tab:Assumptions}
