@@ -2,9 +2,11 @@
 \label{sec:purpose}%
 Widespread electrification of transport is the most efficient way to reach Europe’s climate objectives for the sector and electric charging is the main asset to overcome the obstacles of the take-up of electric vehicles (EVs). EVs can reduce CO2 by an estimated annual 600,000 tons by 2030, going towards a carbon neutral Europe and the importance of this aim raises the problem of having efficient systems that manage the charging services. The e-Mall is thought as an all-encompassing application that oversees the entire process from the user interaction to the effective recharge of the EV's battery.\\
 
-The main goal we want to achieve with the e-Mall software is to help the end users (electric vehicle drivers) to have a better access to recharge and to be able to book a charging point in order to avoid interference with his daily plans. Another important purpose of the system is to safeguard not only the users but also the providers of the service and this is made thought privacy agreements and the actual interaction that guarantees to supervise the both interested parts, in order to get the best possible service and pay for it accordingly, having also a technical and economic exploitation of the charging infrastructures. \\
+The main goal we want to achieve with the e-Mall software is to help The EVDs (electric vehicle drivers) to have a better access to recharge and to be able to book a charging point in order to avoid interference with his daily plans. Another important purpose of the system is to safeguard not only the users but also the providers of the service and this is made thought privacy agreements and the actual interaction that guarantees to supervise the both interested parts, in order to get the best possible service and pay for it accordingly, having also a technical and economic exploitation of the charging infrastructures. \\
 
 In this context there is an increase in the requested electric energy, but large amounts of power in short periods would require investments in the reinforcement of the distribution networks, which have not been designed to accommodate such load. It becomes necessary to introduce new systems and solutions to optimize the operation of distribution networks and we can identify the DSOs as important actors that have to monitor the networks in order to have a safe and controlled supply of the energy and manage faults in the assets. The DSOs communicate with the e-Mall, and in particular with the CPMS modules that decide from where to acquire energy in order to satisfy as well as possible the CPOs economical interests.
+
+%TODO: specify how the user interacts with the eMall throught the mobile app, to make more clear the following notification part
 
 \newcounter{gc}
 \setcounter{gc}{1}
@@ -15,17 +17,17 @@ In this context there is an increase in the requested electric energy, but large
      \hline
      \textbf{Goal} & \textbf{Description} \\
      \hline
-     G\gcnt & The end user is able to identify the charging stations nearby \\
+     G\gcnt & The EVD is able to identify the charging stations nearby \\
      \hline
-     G\gcnt & The end user is able to visualize the tariffs of the charging stations \\
+     G\gcnt & The EVD is able to visualize the tariffs of the charging stations \\
      \hline
-     G\gcnt & The end user is able to visualize any special offer available at the charging station \\
+     G\gcnt & The EVD is able to visualize any special offer available at the charging station \\
      \hline
-     G\gcnt & The end user is able to book a charge in a specific charging station for a certain time-frame\\
+     G\gcnt & The EVD is able to book a charge in a specific charging station for a certain time-frame\\
      \hline
-     G\gcnt & The end user is able to start the charging process at a certain station \\
+     G\gcnt & The EVD is able to start the charging process at a certain station \\
      \hline
-     G\gcnt & The end user is able to pay for the obtained service \\
+     G\gcnt & The EVD is able to pay for the obtained service \\
      \hline
      G\gcnt & The CPO can decide from which DSO to acquire energy \\
      \hline 
@@ -54,9 +56,9 @@ In this context there is an increase in the requested electric energy, but large
      \hline
      \textbf{World phenomena} & \textbf{Description} \\
      \hline
-     WP\wpcount & The end user wants to charge the EV's battery \\
+     WP\wpcount & The EVD wants to charge the EV's battery \\
      \hline
-     WP\wpcount & The end user wants to plan where and when to charge the EV's battery \\
+     WP\wpcount & The EVD wants to plan where and when to charge the EV's battery \\
      \hline
      WP\wpcount & The prices for energy often vary in real world economy \\ 
      \hline
@@ -64,9 +66,9 @@ In this context there is an increase in the requested electric energy, but large
      \hline
      WP\wpcount & The providers of the charging service make special offers during certain time periods.\\
      \hline
-     WP\wpcount & All vehicles have an integrated inverter that converts AC electricity to DC \\
+     WP\wpcount & EVs may have an integrated rectifier that converts AC electricity to DC \\
      \hline
-     WP\wpcount & Some type of chargers have an integrated inverter that converts AC electricity to DC. They supply the EV directly with DC current \\
+     WP\wpcount & Some type of chargers have an integrated rectifier that converts AC electricity to DC. They supply the EV directly with DC current \\
      \hline
      WP\wpcount & A charging of type X, provides electricity in mode C and is given through Z connectors \\
      \hline
@@ -99,6 +101,10 @@ In this context there is an increase in the requested electric energy, but large
      \hline
      WP\wpcount & Given a continuous supply of power W, and a battery with finite capacity C, than the charging time T is finite. \\
      \hline
+     WP\wpcount & A battery can store a finite amount of energy, given by its capacity C. \\
+     \hline
+     WP\wpcount & The charger of a specific charging station may be unusable because of maintenance or faults \\
+     \hline
 \end{tabular}
     \caption{World Phenomena}
     \label{tab:World Phenomena}
@@ -110,6 +116,8 @@ In this context there is an increase in the requested electric energy, but large
      \hline
      \textbf{World phenomena DSO} & \textbf{Description} \\
      \hline
+     WP\wpcount & The DSOs distribute and manage energy from the generation sources\\
+     \hline
      WP\wpcount & The DSOs provide energy to a charging station \\
      \hline
      WP\wpcount & Most electricity is delivered from the power grid as alternating current (AC) \\
@@ -120,64 +128,144 @@ In this context there is an increase in the requested electric energy, but large
      \hline
      WP\wpcount & During the day a momentary increase in voltage may occur. This may happen when a heavy load turns off in a power system.\\
      \hline
+     WP\wpcount & The DSOs operate and manage the electricity distribution networks\\ %MOLTE credo
+     \hline
+     WP\wpcount & The DSOs solve grid problems, such as faults and network breaks\\
+     \hline
+     
 \end{tabular}
     \caption{World Phenomena}
     \label{tab:World Phenomena}
 \end{table}
 
-
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|l|p{0.41\linewidth}|l|l|}
+\clearpage
+\newcounter{sp}
+\setcounter{sp}{1}
+\newcommand{\spcount}{\thesp\stepcounter{sp}}
+\begin{center}
+    %\centering
+    \begin{longtable}[H]{|p{0.15\linewidth}|p{0.41\linewidth}|p{0.15\linewidth}|l|}
      \hline
      \textbf{Shared phenomena} & \textbf{Description} & \textbf{Controller} & \textbf{Observer} \\
      \hline
-     SP1 & The eMall notifies the user when the charging process is finished & eMall & user\\
+     SP\spcount & The eMall notifies the EVD when the charging process is finished & eMall & EVD\\
      \hline
-     SP2 & The end user creates an account & user & eMall\\
+     SP\spcount & The EVD creates an account & EVD & eMall\\
      \hline
-     SP3 & The end user logs in & user & eMall\\
+     SP\spcount & The EVD in order to register inserts in the mobile app of the eMall the personal data (name, surname, payment details) & EVD & eMall \\
      \hline
-     SP4 & The end user in order to register inserts in the mobile app of the eMall the personal data (name, surname, payment details) & user & eMall \\
+     SP\spcount & The EVD logs in & EVD & eMall\\
      \hline
-     SP5 & The end user inserts in the mobile app of the eMall specifications about its vehicles (type of vehicle, inlet type) & user & eMall\\
+     SP\spcount & The EVD accepts the terms of service in order to use the eMall & EVD & eMall\\
      \hline
-     SP6 & The end user accepts the terms of service in order to use the eMall & user & eMall\\
+     SP\spcount & The EVD shares its location with the eMall & EVD & eMall\\
      \hline
-     SP7 & The end user shares its location with the eMall & user & eMall\\
+     SP\spcount & The EVD confirms the payment from the mobile application of the eMall & EVD & eMall \\
      \hline
-     SP8 & The end user confirms the payment from the mobile application of the eMall & user & eMall \\
+     SP\spcount & The EVD deletes previously inserted EVs from its account & EVD & eMall\\
      \hline
-     SP9 & The end user deletes previously inserted EVs from its account & user & eMall\\
+     SP\spcount & The EVD updates the specifications of the EVs on its account & EVD & eMall \\
      \hline
-     SP10 & The end user updates the specifications of the EVs on its account & user & eMall \\
+     SP\spcount & The EVD adds a new EV to its account & EVD & eMall \\
      \hline
-     SP11 & The end user adds a new EV to its account & user & eMall \\
+     SP\spcount & The EVD inserts the maximum and minimum current supported by the EV & EVD & eMall \\
      \hline
-\end{tabular}
+     SP\spcount & The EVD inserts the maximum power supported by the EV & EVD & eMall \\
+     \hline
+     SP\spcount & The EVD inserts the inlet type of the EV & EVD & eMall \\
+     \hline
+     SP\spcount & The EVD inserts whether the EV is equipped with a built-in rectifier & EVD & eMall \\
+     \hline
+     SP\spcount & The EVD inserts the capacity of the battery in kWh & EVD & eMall \\
+     \hline
+     SP\spcount & The eMall shows to the EVD the map of the charging stations nearby his location & eMall & EVD \\
+     \hline
+     SP\spcount & The EVD chooses a charging station from the map & EVD & eMall \\
+     \hline
+     SP\spcount & The eMall shows the user the rating of the charging station & eMall & EVD \\
+     \hline
+     SP\spcount & The EVD inserts the expected time when he plans to start the charging process & EVD & eMall \\
+     \hline
+     SP\spcount & The EVD inserts the expected time when he plans to end the charging process & EVD & eMall \\
+     \hline
+     SP\spcount & The eMall shows to the EVD the list of available chargers of the charging station & eMall & EVD \\
+     \hline
+     SP\spcount & The eMall shows the charger type and its connectors  & eMci / eMma & EVD  \\
+     \hline
+     SP\spcount & The EVD chooses the charger he wants to use from the list of available ones & EVD & eMall \\
+     \hline
+     SP\spcount & The eMall shows to the EVD the charger costs (per kWh, per minute, additional costs) & eMma/eMci & EVD \\
+     \hline
+     SP\spcount & The eMall shows to the EVD the status of the charger & eMci & EVD \\
+     \hline
+     SP\spcount & The eMall shows to the EVD the battery level of the connected EV & eMci & EVD \\
+     \hline
+     SP\spcount & During the charging session the eMall shows to the EVD the power output of the charger & eMci & EVD \\
+     \hline
+     SP\spcount & During the charging session the eMall shows to the EVD the remaining time to complete the charging process & eMci & EVD \\
+     \hline
+     SP\spcount & The EVD starts the charging session from the charger & EVD & eMSP\\
+     \hline
+     SP\spcount & \textit{The CPMS asks the DSO about the current available energy sources, their prices, and special offers} & CPMS & DSO \\ %Requirement
+     \hline
+     SP\spcount & The DSO dynamically changes the price of electricity & DSO & CPMS \\
+     \hline
+     SP\spcount & The DSO changes dynamically the \textit{energy sources} from which acquires energy & DSO & CPMS \\
+     \hline
+     SP\spcount & The DSO makes special offers & DSO & CPMS \\
+     \hline
+     SP\spcount & The CPO logs in & CPO & CPMS \\
+     \hline
+     SP\spcount & The CPO selects the charging station for which to set the parameters (price, energy) of the charging service & CPO & CPMS \\
+     \hline
+     SP\spcount & The CPO selects the DSO from which to acquire energy & CPO & CPMS \\
+     \hline
+     SP\spcount & The CPMS shows to the CPO the \textit{energy sources} and the relative current prices and special offers of the DSO & CPMS & DSO \\
+     \hline
+     SP\spcount & The CPO sets the cost of charging & CPO & CPMS \\
+     \hline
+      SP\spcount & The CPO can set a special offer & CPO & CPMS \\
+     \hline
+     SP\spcount & The CPO selects the energy sources from which to acquire energy & CPO & CPMS \\
+     \hline
+     SP\spcount & The CPMS shows if there are available batteries in the charging station & CPMS & CPO \\
+     \hline
+     SP\spcount & The CPO selects the battery in which to store energy & CPO & CPMS \\
+     \hline
+     SP\spcount & The CPO sets the amount of energy to store in the battery & CPO & CPMS \\
+     \hline
+     SP\spcount & The CPMS dynamically shows to the CPO the number of EVs charging & CPMS & CPO \\
+     \hline
+     SP\spcount & The CPMS dynamically shows to the CPO the charging stations consumption of energy & CPMS & CPO \\
+     \hline
     \caption{Shared Phenomena}
     \label{tab:Shared Phenomena}
-\end{table}
+    \end{longtable}
+\end{center}
 
 \section{Definitions, Acronyms, Abbreviations}
 \label{sec:Definitions, Acronyms, Abbreviations}%
 \subsection{Abbreviations}
 \begin{itemize}
     \item \textbf{eMall}: e-Mobility for all
+    \item \textbf{eMma}: e-Mall mobile application
+    \item \textbf{eMci}: e-Mall charger interface
     \item \textbf{CPMS}: Charging Point Management System
     \item \textbf{CPO}: Charge Point Entity
     \item \textbf{eMSP}: Electric Mobility Service Providers
     \item \textbf{DMS}: Distribution Management System
     \item \textbf{DSO}: Distribution System Operator
     \item \textbf{EV}: Electric Vehicle
+    \item \textbf{EVD}: Electric Vehicle Driver
     \item \textbf{EVSE}: Electric Vehicle Supply Equipment
     \item \textbf{HV}: High Voltage
     \item \textbf{LV}: Low Voltage
     \item \textbf{MV}: Medium Voltage
     \item \textbf{SCADA}: Supervisory Control and Data Acquisition
-    \item \textbf{SCM}: Smart Chargingn Management 
+    \item \textbf{SCM}: Smart Charging Management 
     \item \textbf{OMS}: Outage Management System
+    \item \textbf{AC}: Alternating current
+    \item \textbf{DC}: Direct current
 \end{itemize}
 
 \subsection{Definitions}
@@ -187,7 +275,8 @@ In this context there is an increase in the requested electric energy, but large
     \item \textbf{eMSP}: is the entity that can explore the economic side of the EV charging infrastructure, namely by selling energy for charging purposes.
     \item \textbf{CPMS}: is a software system that manages the charge point infrastructure – can manage the technical and economic aspects of the charging infrastructures.
     \item  \textbf{EV Driver}: person or entity who owns an EV car and can use the public or private facilities for charging purposes.
-    \item \textbf{EVSE}: responsible for the charging of the EV. It is an equipment that is able to charge EV batteries with AC or DC loads and with different rated powers depending on the type of equipment.
+    \item \textbf{EVSE}: Electric Vehicle Supply Equipment. It is an equipment that is able to charge EV batteries with AC or DC loads and with different rated powers depending on the type of equipment.
+    % TODO: what does this mean (private parking)
     \item  \textbf{Private parking}: can be a condominium, industry or other entity who has private owned EV
     \item \textbf{Voltage sag}: a short-duration reduction in voltage of an electric power distribution system. It can be caused by high current demand or fault current elsewhere in the system.
     \item \textbf{Voltage swell}: the opposite of voltage sag. Voltage swell, which is a momentary increase in voltage, happens when a heavy load turns off in a power system.
@@ -196,10 +285,32 @@ In this context there is an increase in the requested electric energy, but large
     \item \textbf{Cable}: a flexible bundle of conductors that connects the EVSE with the electric vehicle
     \item \textbf{Connector}: the end of the flexible cable that interfaces with the vehicle inlet
     \item \textbf{Vehicle inlet}: the port on the electric vehicle that receives charging power
+    \item \textit{Inverter}: It is a power electronic device or circuitry that changes direct current (DC) to alternating current (AC).
+    \item \textbf{Rectifier}: an electrical device that converts alternating current (AC) to direct current (DC).
+    \item \textbf{eMma}: the eMSP subsystem responsible for the EVD interaction from the mobile app
+    \item \textbf{eMci}: the eMSP subsystem responsible for the EVD interaction at the charger
+    \textit{ \item \textbf{additional costs}: overtime penalty, deposit for unregistered users}
+    \item \textbf{Status of the charger}: can be free, occupied, booked and in maintenance
+    \item \textbf{Smart meter}: is an electronic device that records information such as consumption of electric energy, voltage levels, current, and power factor; allow the reading of energy flow and real-time usage, and consequently permit the identification of interruptions in energy flow
 \end{itemize}
 
 \section{Reference Documents}
 \label{sec:Reference Documents}%
+\begin{itemize}
+    \item \verb|IEEE 29148-2018 International Standard - Requirements engineering|: defines the construct of a good requirement and provides attributes and characteristics of requirements; provides also additional guidelines for applying the requirements and requirements-related processes
+    \item \verb|RDD| assignment document
+    \item \verb|Electric Vehicle CPMS and Secondary Substation Management by F. Campos,| \verb|Efacec, Portugal; L. Marques, Efacec, Portugal and K. Kotsalos,| \verb|Efacec,| \verb|Portugal (15 October 2018)|: used to define the interactions between the different parts of the system and the actors; models the EV public infrastructures, the eMSP, the DSO and the CPMS together with the APIs and protocols that allow their communication
+    \item \verb|EV CHARGING: HOW TO TAP IN THE GRID SMARTLY? by Platform |\verb|for|\\\verb|Electromobility| \verb|(May 2022)|: used to understand the environment of the problem and contextualize the analysis
+\end{itemize}
 
 \section{Document Structure}
 \label{sec:Document Structure}%
+This document mainly follows the guidelines of the \verb|IEEE 29148-2018 - International| \verb|Standard - Requirements engineering|, with some changes in the order of the contents. Also in the final part of the document is present an \verb|Alloy| formal analysis of the described model, an additional section with respect to the standard.
+The document is composed by the following parts:
+\begin{itemize}
+    \item An introduction to the domain in which the system will operate (world phenomena) and an initial description of the software to be, the eMall, specifying the goals to achieve
+    \item The overall description of the functions that the eMall has to implement specifying the requirements and a domain model, its interaction with the different users describing with diagrams the most important shared phenomena, and the domain assumptions necessary to the system to be
+    \item A thorough list of requirements both functional and non functional: giving a detailed description of the functional requirements using use cases, use cases diagrams and UML sequence diagrams to better specify the interactions; and characterizing the non functional requirements through software system attributes
+    \item A formal analysis using alloy in order to show the soundness and correctness of the model described in the document, considering only a part the most important requirements of the system
+    \item A section that contains the effort spent by the members of the group working towards the completion of this document
+\end{itemize}
