@@ -50,9 +50,8 @@ In this context there is an increase in the requested electric energy, but large
 \newcounter{wp}
 \setcounter{wp}{1}
 \newcommand{\wpcount}{\thewp\stepcounter{wp}}
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|l|p{0.725\linewidth}|}
+\begin{center}
+    \begin{longtable}{|l|p{0.725\linewidth}|}
      \hline
      \textbf{World phenomena} & \textbf{Description} \\
      \hline
@@ -71,17 +70,6 @@ In this context there is an increase in the requested electric energy, but large
      WP\wpcount & Some type of chargers have an integrated rectifier that converts AC electricity to DC. They supply the EV directly with DC current \\
      \hline
      WP\wpcount & A charging of type X, provides electricity in mode C and is given through Z connectors \\
-     \hline
-\end{tabular}
-    \caption{World Phenomena}
-    \label{tab:World Phenomena}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|l|p{0.725\linewidth}|}
-     \hline
-     \textbf{World phenomena CPO} & \textbf{Description} \\
      \hline
      WP\wpcount & A charging station is owned and managed by one CPO \\
      \hline
@@ -105,17 +93,6 @@ In this context there is an increase in the requested electric energy, but large
      \hline
      WP\wpcount & The charger of a specific charging station may be unusable because of maintenance or faults \\
      \hline
-\end{tabular}
-    \caption{World Phenomena}
-    \label{tab:World Phenomena}
-\end{table}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|l|p{0.725\linewidth}|}
-     \hline
-     \textbf{World phenomena DSO} & \textbf{Description} \\
-     \hline
      WP\wpcount & The DSOs distribute and manage energy from the generation sources\\
      \hline
      WP\wpcount & The DSOs provide energy to a charging station \\
@@ -132,13 +109,11 @@ In this context there is an increase in the requested electric energy, but large
      \hline
      WP\wpcount & The DSOs solve grid problems, such as faults and network breaks\\
      \hline
-     
-\end{tabular}
     \caption{World Phenomena}
     \label{tab:World Phenomena}
-\end{table}
+    \end{longtable}
+\end{center}
 
-\clearpage
 \newcounter{sp}
 \setcounter{sp}{1}
 \newcommand{\spcount}{\thesp\stepcounter{sp}}
@@ -242,6 +217,7 @@ In this context there is an increase in the requested electric energy, but large
     \label{tab:Shared Phenomena}
     \end{longtable}
 \end{center}
+% TODO: Add SP for the EVSE events (it breaks during charging, an error occurs etc)
 
 \section{Definitions, Acronyms, Abbreviations}
 \label{sec:Definitions, Acronyms, Abbreviations}%
