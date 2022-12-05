@@ -1,0 +1,49 @@
+In this section, we briefly represent a list of the most important requirements of the \verb|eMAll|, remaining on an abstract level of description, because the requirements will be further illustrated in much more detail in the next chapter. 
+
+%TODO: TO@bianca
+%BY@fabio
+% In this section, we briefly represent a list of the most important requirements of the \verb|eMAll|, remaing on a high level of abstraction, since we will proceed to further discuss about them in much more detail in the next chapter.
+\subsection{Data collection}
+%User information, charging stations history, electricity data from DSO
+One of the main functionalities of the software is to store and manage different kinds of data coming from different sources:
+\begin{enumerate}
+    \item The EVD using the eMma inserts into the system different kinds of data. He inserts personal data, such as name, surname, and payment details; he also adds information about his EVs, like the maximum and minimum current supported, the connector type, the battery capacity and other relevant facts, like any additional EVSE he might own. The eMall allows the insertion of structured data and full-text elements that are subjected to checks in order to verify their correctness. The software maintains these data on the database in order to associate the bookings and the charging sessions to all registered EVDs, who can access all the functionalities of the system and are not subjected to the payment of a deposit every time they use a charging point;
+    \item The DSO provides energy to the charging stations, and the information about the DSO's supply is automatically collected by the CPMS subsystem of the eMall through interfaces that interact with the external systems. The CPMS acquires the information and saves it on the database in order for it to be visible to the CPO, and updates these data periodically 
+    %TODO: TO@bianca
+    % this last item doesn't involve data collection but it's a scenario on how the CPO can use the system, an interaction of the CPO with the sysem.
+    % did you have something else in mind?
+    \item The CPO manages the charging stations and their supply, acquiring the data from the database, \\
+    %TODO: TO@bianca
+    % I believe we shouldn't mention the inner working of the system but only refere he system in it's generality
+    \textit{getting strategical information through the CPMS system}
+    \\
+    visualizing the information and making data-driven decisions for each one of the charging stations owned by the company. So, the CPO can see the parameters of each station and change them based on the new prices and types of energy, based on the chosen DSO to acquire from and based on the new politics of the CPO's company. \\
+    
+    % this is data collection
+    
+    The eMall also keeps data about the charging points and about the presence of batteries in each charging station, and these are useful information in order to manage the service accurately
+    
+    \item\textit{The charging station itself is an important source of data. Information about the charging points usage, both in terms of frequency throughout different periods of time (day, week, month) and usage time (for how long a certain socket has been used for each charging process) must be kept to enable the eMall system to conduct data analysis procedures (can give information about peak load hours) and empower the CPOs with relevant data to his decision making process. Other information that can be tracked through the system include: client profiling (keep track of clients who visit the charging station), ...  }
+\end{enumerate}
+
+\subsection{Communication and knowledge sharing}
+The eMall provides different tools to the EVD and the CPO in order to acquire knowledge about the service \textit(what do you mean). To be able to share this information the subsystems of the software need to communicate among themselves and with the external entities. The offered tools are the following:
+\begin{enumerate}
+    \item The eMma presents to the EVD all the information needed about the nearby charging stations. The application shows a map with the charging stations, and selecting a station the user can visualize further data, such as price, socket type, free charging points and other details. The eMma is able to provide these information, because it is a part of the eMSP, which communicates with the CPMS to acquire the data. The CPMS also shows these facts on the charging points through the eMci \textit{(isn't eMci part of the eMSP}
+    % TODO: TO@bianca
+    % further clarification about this last phrase
+    \item The web app available to the CPO, communicates with the CPMS part of the software getting the data about the electric supply offered by the DSOs. The CPMS updates the information interacting periodically with the external service of the DSOs and shares the knowledge with all the CPOs, that manage the offered services
+\end{enumerate}
+It is evident that among the functionalities of knowledge sharing and communication between the components involved, we also have as main features the following:
+\begin{enumerate}
+    \item The eMma shows to the EVD the information about the nearby charging stations
+    \item The eMci shows to the EVD the data regarding the charging point in use
+    \item The CPMS gives to the CPO the knowledge of the DSOs changes and the last data saved for each charging station managed by the CPO
+\end{enumerate}
+
+\subsection{Main functionalities}
+Regarding the main functionalities that the EVD perceives, except for the ones already described, the most important ones remain:
+\begin{enumerate}
+    \item The EVD, using the eMma, is able to book a charging point in a certain time frame. The user can choose first the charging station and then the charging point that suits his needs. Once the booking is completed from the app, the EVD receives a confirmation notification and the booking with an associated code is added to the user history of charges. The system saves the data related to the registered EVD and to the booking, so it maintains a copy of the code provided to the user and the data associated to the charging station and the chosen time frame. To effectively charge the car the EVD has to introduce the code into the charging point interface in a time range of maximum 10 minutes before and after the chosen starting time. The eMall, after checking the code, activates a charging session with respect to the EVD, but in order for the charging to take place the EVD needs to connect the plug to the EV
+    \item Also, the EVD has the possibility to charge without booking. In this case he interacts with the eMma and the eMci. From the two subsystems the data are passed to the CPMS, which creates the charging session and allows the user to use the service
+\end{enumerate}

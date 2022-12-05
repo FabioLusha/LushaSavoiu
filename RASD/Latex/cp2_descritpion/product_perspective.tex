@@ -1,5 +1,39 @@
+
+\subsection{Domain model}
+We start off this chapter by analyzing the domain model (or \textit{conceptual model}) we came up to represent the domain we are working in. Being a conceptual model the diagram was not drafted with all the formalism specified in the UML notation; we actually used a pretty informal description, specifying multiplicity and reading direction only when strictly necessary. The model in figure \ref{domain_model} was drawn using the UML class diagram notation, and illustrates only the conceptual classes that are significant to the domain \cite{larmanUML}. We also included the classes representing the component of our system to be that will interact directly with the environment.\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Images/cp2/domain_model_v1}
+    \caption{State diagram of the EVD that starts a charging session}
+    \label{domain_model}
+\end{figure}
+
+We now proceed discussing some of the elements that may not be so immediate only by reading the domain model.
+
+
+\paragraph{EVSE}
+The EVSE, as mentioned in \ref{sec:Definitions, Acronyms, Abbreviations}, is a general term that refers to the the equipment that allows a vehicle to be recharged. In this context we can see it as a universal adapter that can be an interface for the vehicle inlet and the socket of the charging point. In the diagram this is shown by the association \textit{Connects-to} for both class EV and Socket. The multiplicity one-to-one for both associations is to show that at a specific moment a vehicle can be connected to a socket only through one single EVSE \cite{larmanUML}. Obviously, an EV can connect to all the EVSE that have a connector compatible with its inlet, and a Socket can connect to all the EVSE that have a compatible plug. It also should be noticed that there are charging points that do not expose the socket directly but they have an EVSE integrated, namely a cable with it's connector.
+
+\paragraph{DSO}
+In the model the DSO is represented as interacting with both CPO and the CPMS. This happens because we do not distinguish between the actual business and the Information System he uses. So the association between DSO and CPMS is to be intended as the interaction between the two software system, meanwhile, the association between DSO and CPO represents the interaction of the two businesses.
+
+\paragraph{ChargingPoint}
+This class represents the actual physical device that contains the sockets to which the EV will connect to charge.
+
+\paragraph{Battery} In the association \textit{Has} between ChargingStation and Battery we have stated that an instance of ChargingStation may have only one Battery. The rationale behind this decision is that we opted for a high level of abstraction and with the class Battery we mean a generic mean of energy storage, without concerning ourselves with the actual physical properties or requirement of the item itself.
+
+%TODO TO@bianca
+% checki if this description of the CPMS as a service is in accordance with you view
+\paragraph{CPO} The multiplicity one-to-many in the association \textit{Uses} between \textit{CPO} and \textit{CPMS} is motivated by our view of the system. In our perspective, the \textit{CPMS} is viewed as a service that is offered to the business who manages the charging station, thus a \textit{CPO} can choose to manage different charging stations with different \textit{CPMS} systems.
+
 \subsection{State charts}
 Among the main interactions with the eMall we have decided to represent with state diagrams the initiation of a charging station and the booking operation, that we consider the most interesting and complex uses of the system, from the EVD point of view.
+
+%TODO: TO@bianca
+%BY@fabio 
+% rephrasing of this paragraph
+%Among the main interactions with the eMall we have decided to represent here with state diagrams the ones that we consider the most interesting and complex uses of the system, from the EVD point of view, namely: the initiation of a charging station and the booking operations.
 
 \begin{figure}[H]
     \centering
@@ -9,7 +43,7 @@ Among the main interactions with the eMall we have decided to represent with sta
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{Images/booking_charge_state_diag}
+    \includegraphics[width=0.85\textwidth]{Images/booking_charge_state_diag}
     \caption{State diagram of the booking of a charging point}
 \end{figure}
 
