@@ -80,6 +80,7 @@
 \usepackage{lipsum} % DUMMY PACKAGE
 \usepackage{fancyhdr} % For the headers
 \fancyhf{}
+\usepackage{wrapfig}
 
 % Input of configuration file. Do not change config.tex file unless you really know what you are doing. 
 \input{Configuration_Files/config}
@@ -158,6 +159,10 @@
 \input{effort.tex}
 
 \chapter{References}
+
+\nocite{*}
+%\bibliographystyle{plain}
+\bibliography{bibliography}
 \label{ch:chapter_six}%
 
 % LIST OF FIGURES
