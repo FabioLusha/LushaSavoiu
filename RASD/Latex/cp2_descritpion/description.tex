@@ -1,17 +1,17 @@
+In this chapter a general overview of our software to be and its functionalities is given. In section \ref{sec:product_perspective} we will present a conceptual model of the domain we are working in, where, in addition to the real world objects that are significant in our domain and to our system, we include the main components of our system that will interface with the environment. Then, we proceed by presenting the state diagrams of the most important scenarios discussed in the following subsection. In section \ref{sec:Product functions} we give a description of the main functionalities our system has to provide, but without going in much detail since we will delve into this aspects in the next chapter. In section \ref{sec:User_characteristics} we provide an analysis of the target users of the system, which are the clients that will use the system or will interact with it. Finally, in section \ref{sec:Assumptions, dependencies and constraints}, we outline the assumptions, the dependencies and the constraints, necessary to be taken into account when implementing the software.
 \section{Product perspective}
 \label{sec:product_perspective}%
 \input{cp2_descritpion/product_perspective.tex}
 
 \section{Product functions}
 \label{sec:Product functions}%
-
-
+\input{cp2_descritpion/product_function.tex}
 
 \section{User characteristics}
 \label{sec:User_characteristics}%
+\input{cp2_descritpion/user_description.tex}
 
-
-
+\clearpage
 \section{Assumptions, dependencies and constraints}
 \label{sec:Assumptions, dependencies and constraints}%
 \newcounter{ac}
@@ -23,23 +23,23 @@
      \hline
      \textbf{Assumptions} & \textbf{Description} \\
      \hline
-     A\acount & The end user has internet connection \\
+     D\acount & The EVD has internet connection \\
      \hline
-     A\acount & The end user has a mobile phone with an integrated GPS module \\
+     D\acount & The EVD has a mobile phone with an integrated GPS module \\
      \hline
-     A\acount & The end user has the mobile application of the eMSP installed on his mobile phone \\
+     D\acount & The EVD has the mobile application of the eMSP installed on his mobile phone \\
      \hline
-     A\acount & The CPMS shares the location of the charging station to the eMSP through APIs\\
+     D\acount & The CPOs share the location of the charging stations to the eMall through APIs\\
      \hline
-     A\acount & The end user payment from the mobile app is handled by external APIs.\\
+     D\acount & The end user payment from the mobile app is handled by external APIs.\\
      \hline
-     A\acount & The EVD that creates an account inserts the personal data and the EVs specifications during registration \\
+     D\acount & The EVD that creates an account inserts the personal data and the correct payment details during registration \\
      \hline
-     A\acount & The non registered EVD inserts the EVs specifications and payment details during the booking phase \\
+     D\acount & The non registered EVD inserts the EVs specifications and payment details during the booking phase \\
      \hline
-     A\acount & The DSOs use smart meters to detect interruptions and restore the supply of energy \\
+     D\acount & The DSOs use smart meters to detect interruptions and restore the supply of energy \\
      \hline
-     A\acount & The CPO uses company credentials to access the CPMS \\
+     D\acount & The CPO uses company credentials to access the web application of the eMall \\
      \hline
 \end{tabular}
     \caption{Assumptions}

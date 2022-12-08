@@ -1,12 +1,14 @@
 \section{Purpose}
 \label{sec:purpose}%
-Widespread electrification of transport is the most efficient way to reach Europe’s climate objectives for the sector and electric charging is the main asset to overcome the obstacles of the take-up of electric vehicles (EVs). EVs can reduce CO2 by an estimated annual 600,000 tons by 2030, going towards a carbon neutral Europe and the importance of this aim raises the problem of having efficient systems that manage the charging services. The e-Mall is thought as an all-encompassing application that oversees the entire process from the user interaction to the effective recharge of the EV's battery.\\
+Widespread electrification of transport is the most efficient way to reach Europe’s climate objectives for the sector and electric charging is the main asset to overcome the obstacles of the take-up of electric vehicles (EVs). EVs can reduce CO2 by an estimated annual 600,000 tons by 2030, going towards a carbon neutral Europe, and the importance of this aim raises the problem of having efficient systems that manage the charging services. The eMall is thought as an all-encompassing application that oversees the entire process from the user interaction to the effective recharge of the EV's battery.
 
-The main goal we want to achieve with the e-Mall software is to help The EVDs (electric vehicle drivers) to have a better access to recharge and to be able to book a charging point in order to avoid interference with his daily plans. Another important purpose of the system is to safeguard not only the users but also the providers of the service and this is made thought privacy agreements and the actual interaction that guarantees to supervise the both interested parts, in order to get the best possible service and pay for it accordingly, having also a technical and economic exploitation of the charging infrastructures. \\
+The main goal we want to achieve with the eMall software is to help The EVDs (electric vehicle drivers) to have a better access to recharge and to be able to book a charging point in order to avoid interference with his daily plans. Another important purpose of the system is to safeguard not only the users but also the providers of the service and this is made through privacy agreements and the actual interaction, that guarantees to supervise both interested parts, in order to get the best possible service and pay for it accordingly, having also a technical and economic exploitation of the charging infrastructures.
 
-In this context there is an increase in the requested electric energy, but large amounts of power in short periods would require investments in the reinforcement of the distribution networks, which have not been designed to accommodate such load. It becomes necessary to introduce new systems and solutions to optimize the operation of distribution networks and we can identify the DSOs as important actors that have to monitor the networks in order to have a safe and controlled supply of the energy and manage faults in the assets. The DSOs communicate with the e-Mall, and in particular with the CPMS modules that decide from where to acquire energy in order to satisfy as well as possible the CPOs economical interests.
+In this context there is an increase in the requested electric energy, but large amounts of power in short periods would require investments in the reinforcement of the distribution networks, which have not been designed to accommodate such load. It becomes necessary to introduce new systems and solutions to optimize the operation of the distribution networks. In this context we can identify the DSOs as the suppliers of electricity through the distribution networks. The DSOs interact with the eMall, and in particular with the CPMS (Charging Point Management System) module of the system to be. The CPMS, then, gives the information about the DSO's supply to the CPOs, which are important actors, that use the system in order to manage the charging service. A CPO is represented by an employee or a software, part of the business that owns some charging stations and wants to manage them through the eMall, deciding from where to acquire energy, and how to establish the prices, the special offers and other details about the stations.
 
-%TODO: specify how the user interacts with the eMall throught the mobile app, to make more clear the following notification part
+The eMall is thought as a software that manages both the interaction with the businesses that offer the charging service and the interaction with the EVDs which want to use these services in order to charge their EVs. Therefore, the eMall provides a mobile application (eMma), which through its interface allows to the EVD to obtain the service, and provides, also, a web application that the CPOs use to manage the charging stations. The EVD interacts, as well, with the charging point interface (eMci), that communicates with the CPMS part of the eMall, in order to start the charging session from the station, plugging then the car to the compatible connector to effectively charge the EV.
+
+\paragraph{Goals} In the following table we present the main goals of the software to be. The goals capture the needs of the stakeholders, which are the EVDs and the CPOs.
 
 \newcounter{gc}
 \setcounter{gc}{1}
@@ -23,7 +25,7 @@ In this context there is an increase in the requested electric energy, but large
      \hline
      G\gcnt & The EVD is able to visualize any special offer available at the charging station \\
      \hline
-     G\gcnt & The EVD is able to book a charge in a specific charging station for a certain time-frame\\
+     G\gcnt & The EVD is able to book a charge in a specific charging station for a certain time frame\\
      \hline
      G\gcnt & The EVD is able to start the charging process at a certain station \\
      \hline
@@ -44,9 +46,9 @@ In this context there is an increase in the requested electric energy, but large
     \label{tab:Goals}
 \end{table}
 
-
 \section{Scope}
 \label{sec:Scope}%
+\paragraph{World phenomena} The portion of the real world where the machine is to be deployed and used is called the environment. Hence, scoping the problem by defining the environment is paramount, and this is the target of the next table. With the world phenomena we define the environment in which the software to be will operate, by clarifying some facts about the world and the users. In the following chapter, to the environment will be also given some boundaries, making some assumptions and describing some domains properties, but this is not an aspect tackled by the next table of phenomena.
 \newcounter{wp}
 \setcounter{wp}{1}
 \newcommand{\wpcount}{\thewp\stepcounter{wp}}
@@ -57,13 +59,21 @@ In this context there is an increase in the requested electric energy, but large
      \hline
      WP\wpcount & The EVD wants to charge the EV's battery \\
      \hline
-     WP\wpcount & The EVD wants to plan where and when to charge the EV's battery \\
+     WP\wpcount & The EVD wants to plan where and when to charge the EV's battery, so he needs to know the position on the territory of the charging stations and if there are available and compatible charging points\\
      \hline
-     WP\wpcount & The prices for energy often vary in real world economy \\ 
+     WP\wpcount & The EVD wants to know the price and any special offers of the charging stations, to choose the one that better suits his needs \\
      \hline
-     WP\wpcount & The providers of energy, as marketing strategy, have special offers during certain time periods.\\
+     WP\wpcount & The prices of energy often vary in real world economy \\ 
      \hline
-     WP\wpcount & The providers of the charging service make special offers during certain time periods.\\
+     WP\wpcount & The DSOs, as marketing strategy, have special offers during certain time periods.\\
+     \hline
+     WP\wpcount & The DSOs provide energy to the charging stations \\
+     \hline
+     WP\wpcount & The DSOs decide the energy price\\
+     \hline
+     WP\wpcount & The providers of the charging service (CPOs) make special offers during certain time periods\\
+     \hline
+     WP\wpcount & The CPOs decide the price of charging, following marketing trends, and depending on DSOs prices and business decisions\\
      \hline
      WP\wpcount & EVs may have an integrated rectifier that converts AC electricity to DC \\
      \hline
@@ -75,9 +85,11 @@ In this context there is an increase in the requested electric energy, but large
      \hline
      WP\wpcount & A CPO owns and manages one or more charging stations \\
      \hline
+     WP\wpcount & The CPO buys energy from the DSOs\\
+     \hline
      WP\wpcount & A charging station may be equipped with batteries \\
      \hline
-     WP\wpcount & \textit{Charging stations equipped with batteries grant more flexibility to CPOs on how to choose between the energy stored in the batteries and the one offered by DSOs} \\
+     WP\wpcount & Charging stations equipped with batteries grant more flexibility to CPOs on how to choose between the energy stored in the batteries and the one offered by DSOs \\
      \hline
      WP\wpcount & Low voltage (3.7 - 11 kW) chargers need more time to charge the battery \\
      \hline
@@ -91,11 +103,9 @@ In this context there is an increase in the requested electric energy, but large
      \hline
      WP\wpcount & A battery can store a finite amount of energy, given by its capacity C. \\
      \hline
-     WP\wpcount & The charger of a specific charging station may be unusable because of maintenance or faults \\
+     WP\wpcount & The charging point of a specific charging station may be unusable because of maintenance or faults \\
      \hline
      WP\wpcount & The DSOs distribute and manage energy from the generation sources\\
-     \hline
-     WP\wpcount & The DSOs provide energy to a charging station \\
      \hline
      WP\wpcount & Most electricity is delivered from the power grid as alternating current (AC) \\
      \hline
@@ -105,7 +115,7 @@ In this context there is an increase in the requested electric energy, but large
      \hline
      WP\wpcount & During the day a momentary increase in voltage may occur. This may happen when a heavy load turns off in a power system.\\
      \hline
-     WP\wpcount & The DSOs operate and manage the electricity distribution networks\\ %MOLTE credo
+     WP\wpcount & The DSOs operate and manage the electricity distribution networks\\ 
      \hline
      WP\wpcount & The DSOs solve grid problems, such as faults and network breaks\\
      \hline
@@ -113,6 +123,9 @@ In this context there is an increase in the requested electric energy, but large
     \label{tab:World Phenomena}
     \end{longtable}
 \end{center}
+
+\paragraph{Shared phenomena} The shared phenomena define the interface through which the machine interacts with the world. The software monitors some shared phenomena, while controls others, and to show when the software takes the part of the controller and when the part of the observer we created two more columns in the next table, to keep track of the initiator of the action, in case the natural language turns out to be ambiguous. So, in the following assertions we present an interaction between the world (users and external systems) and the machine (the eMall, especially its interfaces, such as the eMma, the eMci and the managerial web application).  
+%TODO: In the SP substitute the eMall with the specific interfaces that takes part in the shared phenomena
 
 \newcounter{sp}
 \setcounter{sp}{1}
@@ -127,11 +140,11 @@ In this context there is an increase in the requested electric energy, but large
      \hline
      SP\spcount & The EVD creates an account & EVD & eMall\\
      \hline
-     SP\spcount & The EVD in order to register inserts in the mobile app of the eMall the personal data (name, surname, payment details) & EVD & eMall \\
+     SP\spcount & The EVD in order to register inserts in the mobile app of the eMall the personal data (name, surname, email, password, payment details) & EVD & eMall \\
      \hline
-     SP\spcount & The EVD logs in & EVD & eMall\\
+     SP\spcount & The EVD logs in using the email and the password & EVD & eMall\\
      \hline
-     SP\spcount & The EVD accepts the terms of service in order to use the eMall & EVD & eMall\\
+     SP\spcount & The EVD accepts the terms of service in order to use the eMma & EVD & eMall\\
      \hline
      SP\spcount & The EVD shares its location with the eMall & EVD & eMall\\
      \hline
@@ -227,7 +240,7 @@ In this context there is an increase in the requested electric energy, but large
     \item \textbf{eMma}: e-Mall mobile application
     \item \textbf{eMci}: e-Mall charger interface
     \item \textbf{CPMS}: Charging Point Management System
-    \item \textbf{CPO}: Charge Point Entity
+    \item \textbf{CPO}: Charge Point Operator
     \item \textbf{eMSP}: Electric Mobility Service Providers
     \item \textbf{DMS}: Distribution Management System
     \item \textbf{DSO}: Distribution System Operator
@@ -250,7 +263,7 @@ In this context there is an increase in the requested electric energy, but large
     \item \textbf{CPO}: entity that technically manages all the EV infrastructure assets, depending of existing country regulation – this role can be assured by the DSO or other entity.
     \item \textbf{eMSP}: is the entity that can explore the economic side of the EV charging infrastructure, namely by selling energy for charging purposes.
     \item \textbf{CPMS}: is a software system that manages the charge point infrastructure – can manage the technical and economic aspects of the charging infrastructures.
-    \item  \textbf{EV Driver}: person or entity who owns an EV car and can use the public or private facilities for charging purposes.
+    \item  \textbf{EVD}: person or entity who owns an EV car and can use the public or private facilities for charging purposes.
     \item \textbf{EVSE}: Electric Vehicle Supply Equipment. It is an equipment that is able to charge EV batteries with AC or DC loads and with different rated powers depending on the type of equipment.
     % TODO: what does this mean (private parking)
     \item  \textbf{Private parking}: can be a condominium, industry or other entity who has private owned EV
@@ -264,7 +277,7 @@ In this context there is an increase in the requested electric energy, but large
     \item \textit{Inverter}: It is a power electronic device or circuitry that changes direct current (DC) to alternating current (AC).
     \item \textbf{Rectifier}: an electrical device that converts alternating current (AC) to direct current (DC).
     \item \textbf{eMma}: the eMSP subsystem responsible for the EVD interaction from the mobile app
-    \item \textbf{eMci}: the eMSP subsystem responsible for the EVD interaction at the charger
+    \item \textbf{eMci}: the eMSP subsystem responsible for the EVD interaction at the charging point
     \textit{ \item \textbf{additional costs}: overtime penalty, deposit for unregistered users}
     \item \textbf{Status of the charger}: can be free, occupied, booked and in maintenance
     \item \textbf{Smart meter}: is an electronic device that records information such as consumption of electric energy, voltage levels, current, and power factor; allow the reading of energy flow and real-time usage, and consequently permit the identification of interruptions in energy flow
