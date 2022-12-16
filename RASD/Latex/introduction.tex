@@ -2,7 +2,7 @@
 \label{sec:purpose}%
 Widespread electrification of transport is the most efficient way to reach Europe’s climate objectives for the sector and electric charging is the main asset to overcome the obstacles of the take-up of electric vehicles (EVs). EVs can reduce CO2 by an estimated annual 600,000 tons by 2030, going towards a carbon neutral Europe, and the importance of this aim raises the problem of having efficient systems that manage the charging services. The eMall is thought as an all-encompassing application that oversees the entire process from the user interaction to the effective recharge of the EV's battery.
 
-The main goal we want to achieve with the eMall software is to help The EVDs (electric vehicle drivers) to have a better access to recharge and to be able to book a charging point in order to avoid interference with his daily plans. Another important purpose of the system is to safeguard not only the users but also the providers of the service and this is made through privacy agreements and the actual interaction, that guarantees to supervise both interested parts, in order to get the best possible service and pay for it accordingly, having also a technical and economic exploitation of the charging infrastructures.
+The main goal we want to achieve with the eMall software is to help The EVDs (electric vehicle drivers) to have better access to recharge and to be able to book a charging point in order to avoid interference with his daily plans. Another important purpose of the system is to safeguard not only the users but also the providers of the service and this is made through privacy agreements and the actual interaction, that guarantees to supervise both interested parts, in order to get the best possible service and pay for it accordingly, having also a technical and economic exploitation of the charging infrastructures.
 
 In this context there is an increase in the requested electric energy, but large amounts of power in short periods would require investments in the reinforcement of the distribution networks, which have not been designed to accommodate such load. It becomes necessary to introduce new systems and solutions to optimize the operation of the distribution networks. In this context we can identify the DSOs as the suppliers of electricity through the distribution networks. The DSOs interact with the eMall, and in particular with the CPMS (Charging Point Management System) module of the system to be. The CPMS, then, gives the information about the DSO's supply to the CPOs, which are important actors, that use the system in order to manage the charging service. A CPO is represented by an employee or a software, part of the business that owns some charging stations and wants to manage them through the eMall, deciding from where to acquire energy, and how to establish the prices, the special offers and other details about the stations.
 
@@ -156,6 +156,8 @@ The eMall is thought as a software that manages both the interaction with the bu
      \hline
      SP\spcount & The EVD adds a new EV to its account & EVD & eMall \\
      \hline
+     SP\spcount & The EVD updates personal data on its profile (such as email, payment) & EVD & eMall \\
+     \hline
      SP\spcount & The EVD inserts the maximum and minimum current supported by the EV & EVD & eMall \\
      \hline
      SP\spcount & The EVD inserts the maximum power supported by the EV & EVD & eMall \\
@@ -257,6 +259,7 @@ The eMall is thought as a software that manages both the interaction with the bu
     \item \textbf{DC}: Direct current
 \end{itemize}
 
+%TODO: keep the eMma and eMci or use only the given acronyms to simplify the reading?
 \subsection{Definitions}
 \begin{itemize}
     \item \textbf{DSO}: typically the entity responsible for the operation and management of distribution networks – High, Medium and Low Voltage networks. For this purpose, the DSO typically owns systems such as Supervisory and Control Data Acquisition (SCADA)/ Distribution Management System (DMS) for the monitoring and general overview of the state of the network. It also owns other systems such as the Outage Management System (OMS) and Work Force Management System (WFMS) for addressing the network operation problems related with the continuity and quality of service.
