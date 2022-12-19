@@ -1,11 +1,14 @@
-The main component of our system to be: eMma, eMci, eMsp and CPMS all have differente hardware needs; 
-eMma shall be a mobile application, so:
+The main components of our system to be: eMma, eMci, eMsp and CPMS all have different hardware needs thus, in the proceedings paragraphs we shall discuss each of them individually.
+
+\paragraph{eMma} eMma is the mobile application so it must be able to run on a range of mobile platforms. In particular the scope of this part of the system regard only mobile platforms known as smartphone, so the system must be able to adapt to the smaller screen sizes and limited processing power of mobile devices, while still providing a user-friendly and intuitive interface. Furthermore, it is required that the mobile device be equipped with a GPS sensor to offer the geolocation service of our system.
+
+\paragraph{eMci} is the part of the system that will run on device mounted on the charging point. This kind of devices may not have common architecture, so a variety of platforms may be expected. We can consider this device to be an 'embedded device'. The characteristics we assume to hold for this devices are:
 \begin{itemize}
-    % this is a software interface
-    \item The system must be able to run on a range of mobile platforms, including Android and iOS, and must be compatible with the latest versions of these platforms
-    \item The system must be able to adapt to the smaller screen sizes and limited processing power of mobile devices, while still providing a user-friendly and intuitive interface
-    %Should go to the communication Interfaces
-    \item The system must be able to securely transmit and store data on mobile devices, in compliance with relevant security standards and regulations
-    \item The system must able to run adequately on low-end mobile devices with limited computational resources 
+    \item Limited computing power
+    \item connectivity module (wireless or wired) to connect to the internet
+    \item connection to the internet
 \end{itemize}
 
+\paragraph{eMSP} This part of the eMall is the one that must handle user request, coming from eMma, and communicate with the CPMS. This part of the system should run on a general purpose computer, so the hardware interfaces are the ones of common knowledge.
+
+\paragraph{CPMS} This part of the system is intended to have a web graphical interface to be viewed on a screen of a laptop or desktop PC, so it must be build for screens with size greater than 13 inches. The other part is of the CPMS is intended to be run on a general purpose computer, so like the eMSP no specific hardaware interfaces are requested in addition to those provided by a classical computer.

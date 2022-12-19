@@ -11,7 +11,6 @@ In this chapter a general overview of our software to be and its functionalities
 \label{sec:User_characteristics}%
 \input{cp2_descritpion/user_description.tex}
 
-\clearpage
 \section{Assumptions, dependencies and constraints}
 \label{sec:Assumptions, dependencies and constraints}%
 \newcounter{ac}
@@ -29,19 +28,16 @@ In this chapter a general overview of our software to be and its functionalities
      \hline
      D\acount & The EVD has the mobile application of the eMSP installed on his mobile phone \\
      \hline
-     D\acount & The CPOs share the location of the charging stations to the eMall through APIs\\
-     \hline
      D\acount & The EVD inserts correct data in the mobile application \\
      \hline
      D\acount & The CPO inserts correct data in the web application \\
      \hline
+     %Is this correct? Or is better just to pass the information?
+     D\acount & The CPOs send the data of the charging stations to the eMall \\
+     \hline
      D\acount & The end user payment from the mobile app is handled by external APIs.\\
      \hline
-     D\acount & The EVD that creates an account inserts the personal data and the correct payment details during registration \\
-     \hline
-     D\acount & The non registered EVD inserts the EVs specifications and payment details during the booking phase \\
-     \hline
-     D\acount & The DSOs use smart meters to detect interruptions and restore the supply of energy \\
+     D\acount & The EVD that creates an account inserts the personal data and the payment details during registration \\
      \hline
      D\acount & The CPO uses company credentials to access the web application of the eMall \\
      \hline
