@@ -1,0 +1,73 @@
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codeblue}{rgb}{0,0,0.6}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{1,1,1}
+
+\lstdefinestyle{shell}{
+	language=Erlang,
+	basicstyle=\ttfamily\small,
+	keywordstyle=,
+	morekeywords={fun},
+	breakatwhitespace=false,                        
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=none,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=4,
+	breaklines=true,
+	postbreak=\mbox{\textcolor{black}{$\hookrightarrow$}\space}
+}
+
+
+%black and white with bold keywords
+% \lstdefinestyle{code}{
+% 	language=Erlang,
+% 	basicstyle=\ttfamily\small,
+% 	morekeywords={fun},
+%	deletekeywords={],[},
+%	keywordstyle=\color{black}\bfseries,
+%	breakatwhitespace=false,              
+%	captionpos=b,                    
+%	keepspaces=true,                                  
+%	showspaces=false,                
+%	showstringspaces=false,
+%	showtabs=false,                  
+%	tabsize=4,
+%	breaklines=true,
+%	postbreak=\mbox{\textcolor{black}{$\hookrightarrow$}\space},
+%	texcl=true,
+%}
+
+
+%code with colour
+\lstdefinestyle{code}{
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta}\bfseries\small,
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily,
+	morekeywords={fun, in, no, not, run, disj, iff, and, assert, check, sig, one, lone, some, set, all, open, implies, pred, fact},
+    deletestring=[b]{'},
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=none,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=4,
+	breaklines=true,
+	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
+\lstset{language=Java, style=code}
+%%\lstset{style=shell}
