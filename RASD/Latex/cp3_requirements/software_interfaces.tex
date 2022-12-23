@@ -1,21 +1,22 @@
 Like in the section above, we will proceed describing the software interfaces distinguishing it for each of the main component of our system.
 
-\paragraph{eMma} The mobile application of the eMSP will have to be compatible with the major platforms present in the market, namely iOS and Android. We do not care about other mobile platforms since with this two we cover the 99\% of mobile users. If implementing the system for older versions of the two OSes becomes tiresome, then this older version shall be not considered. Nonetheless, the system shall be compatible with at least Android 10 and iOS 16. Targeting this two versions of the OSes will cover 72\% of iOS users\footnote{\url{https://gs.statcounter.com/ios-version-market-share}} and nearly 70\% of Android users\footnote{\url{https://gs.statcounter.com/os-version-market-share/android}}. For the interaction with other components vital to our system, like internet interface and GPS interface, the modules provided by each OS will be sufficient.
+\paragraph{eMma} The mobile application of the eMSP will have to be compatible with the major platforms present in the market, namely iOS and Android. We do not care about other mobile platforms since with this two we cover the 99\% of mobile users. If implementing the system for older versions of the two OSes becomes tiresome, then these older versions shall be not considered. Nonetheless, the system shall be compatible with at least Android 10 and iOS 16. Targeting this two versions of the OSes will cover 72\% of iOS users\footnote{\url{https://gs.statcounter.com/ios-version-market-share}} and nearly 70\% of Android users\footnote{\url{https://gs.statcounter.com/os-version-market-share/android}}. For the interaction with other components vital to our system, like internet interface and GPS interface, the modules provided by each OS will be sufficient.
 
-\paragraph{eMci} Considering that this part of the system will run on an 'embedded device', interfacing with am embedded OS will be mandatory. Integrating an embedded OS in the device will make the development much easier and faster, given that most of device will be managed by the OS and the development team will only need to interact with the OS. The embedded OS should also integrate the driver for the network card and offer an interface to interact with it. Moreover, the system will have to communicate with the software running on the charging point to monitor it's status and the charging status when an EV is charging.
+\paragraph{eMci} Considering that this part of the system will run on an 'embedded device', interfacing with an embedded OS will be mandatory. Integrating an embedded OS in the device will make the development much easier and faster, given that most of the device will be managed by the OS and the development team will only need to interact with the OS. The embedded OS should also integrate the driver for the network card and offer an interface to interact with it. Moreover, the system will have to communicate with the software running on the charging point to monitor it's status and the charging status when an EV is charging.
 
 \paragraph{eMSP} 
 \begin{enumerate}
-    \item The system will run on a general purpose computer so they must interact with the Operating Systems running on the device
+    \item The system will run on a general purpose computer so it must interact with the Operating Systems running on the device
     \item It must keep track of user data, so it needs to interact with a persistence system like a DBMS
-    \item must be able to interact with multiple CPMSs, so the system shall support interoperability with different CPMSs
+    \item It must be able to interact with multiple CPMSs, so the system shall support interoperability with different CPMSs
+    \item It must be able to interact with external APIs to enable the payment of the service
 \end{enumerate}
 
 \paragraph{CPMS}
 \begin{enumerate}
-    \item he system will run on a general purpose computer so they must interact with the Operating Systems running on the device.
-    \item It must keep track of CPO instructions, charging station status, etc., so it needs to interact with DBMS
-    \item It shall interact with the software managing the technical aspect of the charging points, like handling the electricity flow, so the system must know how to instruct this software
+    \item The system will run on a general purpose computer so it must interact with the Operating Systems running on the device
+    \item It must keep track of CPO instructions, charging station status and parameters, etc., so it needs to interact with a DBMS
+    \item It shall interact with the software managing the technical aspect of the charging points, like handling the electricity flow, fault detection, etc., so the system must know how to interact with this software
     \item It shall interact with the different API's provided by different DSOs
     \item If a system of energy storage is present, namely a battery, the CPMS shall interact with the software managing it, so it can give directives on how to proceed
 \end{enumerate}

@@ -4,52 +4,47 @@
      \hline
      \textbf{Use case} & \textbf{Requirement}\\
      \hline
-     RegisterEVD & R1, R2, R6, R14, R26, R28, R32, R33, R34, R35, R36 \\
+     RegisterEVD & R1, R2, R6, R14, R26, R32, R33, R34, R35, R36 \\
      \hline
-     LogIn & R1, R26, R28, R32, R36 \\
+     LogIn & R1, R26, R27, R32, R36 \\
      \hline
-     BookChargingPoint & R8, R9, R10, R11, R12, R14, R15, R16, R17, R18, R26, R28, R31, R32, R33, R36, R37, R38, R39 \\
+     BookChargingPoint & R17, R18, R31, R32, R33, R36, R37, R38, R39 \\
      \hline
-     CancelChargingBooking &  R19, R26, R28, R33, R65 \\
+     CancelBooking &  R19, R32, R33, R65 \\
      \hline
-     VisualizeChargingHistory & R21, R22, R26, R28, R29, R65 \\
+     VisualizeChargingHistory & R21, R22, R32, R65 \\
      \hline
-     %Add R10, R11, R12 or R38? Modify the use case saying that is visible some information on the charging poin interface?
-     ChargeNow & R23, R26, R28, R32, R33, R36, R40, R41, R64 \\
+     ChargeNow & R23, R32, R33, R36, R40, R41 \\
      \hline
-     %R3 is only for a generic modifyProgile updating a vehicle that we don't consider in use cases
-     ModifyProfileWithNewVehicle & R2, R4, R20, R26, R28, R32, R33 \\
+     ModifyProfileWithNewVehicle & R2, R4, R20, R32, R33 \\
      \hline
-     ModifyProfileDeletingVehicle & R5, R20, R26, R28, R32, R33 \\
+     ModifyProfileDeletingVehicle & R5, R20, R32, R33 \\
      \hline
-     ModifyProfilePersonalData & R7, R20, R26, R28, R32, R33 \\
+     ModifyProfilePersonalData & R7, R20, R32, R33 \\
      \hline
-     VisualizeStations & R8, R9, R10, R11, R12, R14, R15, R16, R26, R28 \\
+     VisualizeStations & R8, R9, R10, R11, R12, R14, R15, R16 \\
      \hline
-     %TODO: First add the use case TerminateCharging initiated by the eMall, and an use case about acquiring data from the DSO initiated by the CPMS
-     %TODO: Correct the use case diagram, adding these new use cases
-     TerminateCharging & \\
+     TerminateCharging & R13, R25, R32, R33, R67, R68\\
      \hline
-     GetDataFromDSO & \\
+     UseEnergyFromBattery & \\
      \hline
-     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-     UpdateDSO & R27, R30, R31, R42, R43, R44, R51, R52, R53, R54, R55, R56, R57, R58, R59, R64 \\
+     StoreEnergyInBattery & \\
      \hline
-     %TODO: Correct the UpdatePrice and AddPromotion (the promotion: there can be one for each charging point and one general for the charging station) that changes the price of only a charging point and not all the charging station
-     UpdatePrice & R27, R30, R31, R42, R43, R44, R49, R51, R52, R53, R54, R55, R56, R57, R60, R64\\
+     UpdateDSO & R30, R31, R42, R43, R44, R51, R52, R53, R54, R55, R56, R57, R58, R59 \\
      \hline
-     AddPromotion & R27, R30, R31, R42, R43, R44, R50, R51, R52, R53, R54, R55, R56, R57, R61, R64 \\
+     UpdatePrice & R42, R43, R44, R49, R51, R52, R53, R54, R55\\
      \hline
-     SolveNotification & R27, R30, R31, R42, R43, R51, R52, R53, R54, R64, R66\\
+     AddPromotion & R42, R43, R44, R50, R51, R52, R53, R54, R55, R60 \\
      \hline
-     %Maybe start from a step further in order to not consider viewing the charging stations and the notification that are not necessary (I didn't consider here R42, R43)
-     VisualizeGraphicalInformation & R27, R30, R31, R62, R63, R64 \\
+     SolveNotification & R42, R43, R51, R52, R53, R54, R64\\
      \hline
-     AddChargingPoint & R27, R30, R31, R42, R43, R44, R48, R49, R50, R51, R52, R53, R54, R55, R64 \\
+     VisualizeGraphicalInformation & R61, R62 \\
      \hline
-     AddChargingStation & R27, R30, R31, R42, R43, R46, R48, R49, R50, R51, R52, R53, R54, R56, R57, R59, R61, R64\\
+     AddChargingPoint & R42, R43, R44, R48, R49, R50, R51, R52, R53, R54, R55 \\
      \hline
-     DeleteChargingStation & R27, R30, R31, R42, R43, R45, R53, R54, R55, R64\\
+     AddChargingStation & R42, R43, R46, R48, R49, R51, R52, R53, R54, R59, R60 \\
+     \hline
+     DeleteChargingStation & R42, R43, R45, R53, R54, R55 \\
      \hline
     \caption{Mapping on requirements}
     \label{tab:Mapping on requirements}

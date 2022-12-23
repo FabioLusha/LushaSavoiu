@@ -13,6 +13,7 @@ In this chapter a general overview of our software to be and its functionalities
 
 \section{Assumptions, dependencies and constraints}
 \label{sec:Assumptions, dependencies and constraints}%
+Here we report the main domain assumptions used for the modeling of the eMall. We tried to leave as much freedom as possible, not liming the system with too much assumptions.
 \newcounter{ac}
 \setcounter{ac}{1}
 \newcommand{\acount}{\theac\stepcounter{ac}}
@@ -32,7 +33,6 @@ In this chapter a general overview of our software to be and its functionalities
      \hline
      D\acount & The CPO inserts correct data in the web application \\
      \hline
-     %Is this correct? Or is better just to pass the information?
      D\acount & The CPOs send the data of the charging stations to the eMall \\
      \hline
      D\acount & The end user payment from the mobile app is handled by external APIs.\\
@@ -40,6 +40,14 @@ In this chapter a general overview of our software to be and its functionalities
      D\acount & The EVD that creates an account inserts the personal data and the payment details during registration \\
      \hline
      D\acount & The CPO uses company credentials to access the web application of the eMall \\
+     \hline
+     D\acount & The DSO is associated to the whole charging station \\
+     \hline
+     D\acount & There is a type of promotion, that can be associated to the whole charging station \\
+     \hline
+     D\acount & There is a type of promotion, that can be associated to only a charging point \\
+     \hline
+     D\acount & The price can vary in different charging points \\
      \hline
 \end{tabular}
     \caption{Assumptions}

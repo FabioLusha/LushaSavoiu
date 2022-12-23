@@ -22,7 +22,7 @@
      \hline
      R\rcount & The system shall allow an EVD to view the charging stations on the map\\
      \hline
-     %In the following 2 specify what are the relevant data: parametrize 
+     %TODO: In the following 2 specify what are the relevant data: parametrize 
      R\rcount & The system shall allow an EVD to view relevant data about the charging stations\\
      \hline
      R\rcount & The system shall allow an EVD to view relevant data about a specific charging point\\
@@ -31,7 +31,6 @@
      \hline
      R\rcount & The system shall allow an EVD to view the special offers of the charging points of the stations\\
      \hline
-     %AfterCharging use case to show the review part and the fact that the system allows to pay for the service
      R\rcount & The system shall allow a registered EVD to review a charging station \\
      \hline
      R\rcount & The system shall allow an EVD to share his location through the GPS module of his mobile phone\\
@@ -42,8 +41,6 @@
      \hline
      R\rcount & The system shall allow a registered EVD to book a charge from an available charging point in a charging station\\
      \hline
-     %BookingCharging the user enters the time-frame? Date and time?
-     %TODO: Should we add a date?
      R\rcount & The system shall allow a registered EVD to choose the time-frame (date and time) in which to book a charge\\
      \hline
      R\rcount & The system shall allow a registered EVD to cancel a charging point booking\\
@@ -52,13 +49,13 @@
      \hline
      R\rcount & The system shall allow a registered EVD to view the charging history \\
      \hline
-     R\rcount & The system shall allow a registered EVD to choose the criteria of the visualization of the charging history\\
+     R\rcount & The system shall allow a registered EVD to choose a visualization criteria for the charging history\\
      \hline
      R\rcount & The system shall allow an EVD to start a charging session \\
      \hline
      R\rcount & The system shall allow a registered EVD to insert the charging point code, in order to start a charging session\\
      \hline
-     R\rcount & The system shall allow an EVD to pay for the charging service\\
+     R\rcount & The system shall allow an EVD to choose the payment method to use in order to pay for the obtained service\\
      \hline
      R\rcount & The system must allow the registered EVD to log in\\
      \hline
@@ -80,26 +77,23 @@
      \hline
      R\rcount & The system must ask the EVD, during registration, to agree to the terms of service\\
      \hline
-     R\rcount & The system must check for the correctness of the inserted data (login details, charging point code, ecc.)\\
+     R\rcount & The system must check for the correctness of the data inserted by the EVD (login details, charging point code, ecc.)\\
      \hline
-     R\rcount & The system must show the available charging points to book \\
+     R\rcount & The system must show only the free charging points to book \\
      \hline
      R\rcount & The system must show for each available charging point the relevant information (type of charging, type of socket, charging speed, price, special offers, etc.)\\
      \hline
      R\rcount & The system must show a summary of the successful booking operation \\
      \hline
-     %This is changed when charging, so why do we talk about this in the booking use case?
      R\rcount & The system must change the status of the charging point during charging \\
      \hline
      R\rcount & The system must unlock the charging point if the code is correct\\
      \hline
-     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-     %CPO goals: acquire from DSO, cost of charging, set special offers, decide to store energy in batteries and use
      R\rcount & The system shall allow the CPO to view the charging stations \\
      \hline
      R\rcount & The system shall allow the CPO to view any notification regarding the charging stations \\
      \hline
-     R\rcount & The system shall allow the CPO to update a charging station \\
+     R\rcount & The system shall allow the CPO to update the details of a charging station \\
      \hline
      R\rcount & The system shall allow the CPO to delete a charging station \\
      \hline
@@ -111,7 +105,6 @@
      \hline
      R\rcount & The system shall allow the CPO to set the price of the charging point\\
      \hline
-     %Modify the use case: special offer related to the single charging point
      R\rcount & The system shall allow the CPO to set a special offer for the charging point\\
      \hline
      R\rcount & The system must check the correctness of the data inserted by the CPO \\
@@ -128,13 +121,9 @@
      \hline
      R\rcount & The system shall allow the CPO to view the DSO's special offers for the energy sources\\
      \hline
-     %Doubt: the DSO is for the whole charging station or only a charging point? For all the charging station (Assumption)
      R\rcount & The system shall allow the CPO to change the DSO of a charging station\\
      \hline
      R\rcount & The system shall allow the CPO to choose the DSO's energy source for the charging station\\
-     \hline
-     %UseCase -> UpdatePrice correct the fact that the price is associated to the charging point not all the station, correct also the AddPromotion use case
-     R\rcount & The system shall allow the CPO to update the price of a charging point \\
      \hline
      R\rcount & The system shall allow the CPO to set a special offer for the charging station\\
      \hline
@@ -142,13 +131,18 @@
      \hline
      R\rcount & The system must show a graphical representation of some aspects of the charging stations \\
      \hline
-     R\rcount & The system shall be interoperable with systems made by other companies \\
-     \hline
-     %TODO: In the use case CancelBookings chane imminent in upcoming, change also in ChargeNow
      R\rcount & The system shall allow the registered EVD to view his upcoming bookings \\
      \hline
      R\rcount & The system shall allow the CPO to select a notification to solve it \\
      \hline 
+     R\rcount & The system shall allow the CPO to decide if for a charging station wants to store energy from the DSO in the battery of the station \\
+     \hline 
+     R\rcount & The system shall allow the CPO to decide if for a charging station wants to use the battery or acquire energy from the DSO \\
+     \hline
+     R\rcount & The system shall allow an EVD to charge the battery until full capacity \\
+     \hline
+     R\rcount & The system must communicate with external APIs to complete the payment \\
+     \hline
     \caption{Requirements}
     \label{tab:Requirements}
     \end{longtable}

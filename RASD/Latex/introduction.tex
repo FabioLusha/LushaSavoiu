@@ -31,6 +31,10 @@ The eMall is thought as a software that manages both the interaction with the bu
      \hline
      G\gcnt & The EVD is able to pay for the obtained service \\
      \hline
+     G\gcnt & The EVD can manage his bookings and charging sessions \\
+     \hline
+     G\gcnt & The EVD can manage and modify his account details (personal data and EVs information \\
+     \hline
      G\gcnt & The CPO can decide from which DSO to acquire energy \\
      \hline 
      G\gcnt & The CPO can decide the cost of charging \\
@@ -41,6 +45,8 @@ The eMall is thought as a software that manages both the interaction with the bu
      \hline 
      G\gcnt & The CPO can decide whether to use the energy available in the batteries \\
      \hline 
+     G\gcnt & The CPO can manage the charging stations' daily operations\\
+     \hline
 \end{tabular}
     \caption{Goals}
     \label{tab:Goals}
@@ -126,8 +132,7 @@ The eMall is thought as a software that manages both the interaction with the bu
     \end{longtable}
 \end{center}
 
-\paragraph{Shared phenomena} The shared phenomena define the interface through which the machine interacts with the world. The software monitors some shared phenomena, while controls others, and to show when the software takes the part of the controller and when the part of the observer we created two more columns in the next table, to keep track of the initiator of the action, in case the natural language turns out to be ambiguous. So, in the following assertions we present an interaction between the world (users and external systems) and the machine (the eMall, especially its interfaces, such as the eMma, the eMci and the managerial web application).  
-%TODO: In the SP substitute the eMall with the specific interfaces that takes part in the shared phenomena
+\paragraph{Shared phenomena} The shared phenomena define the interface through which the machine interacts with the world. The software monitors some shared phenomena, while controls others, and to show when the software takes the part of the controller and when the part of the observer we created two more columns in the next table, to keep track of the initiator of the action, in case the natural language turns out to be ambiguous. So, in the following assertions we present an interaction between the world (users and external systems) and the machine (the eMall, especially its interfaces, such as the eMma, the eMci and the managerial web application).
 
 \newcounter{sp}
 \setcounter{sp}{1}
@@ -138,67 +143,67 @@ The eMall is thought as a software that manages both the interaction with the bu
      \hline
      \textbf{Shared phenomena} & \textbf{Description} & \textbf{Controller} & \textbf{Observer} \\
      \hline
-     SP\spcount & The eMall notifies the EVD when the charging process is finished & eMall & EVD\\
+     SP\spcount & The eMma notifies the EVD when the charging process is finished & eMma & EVD\\
      \hline
-     SP\spcount & The EVD creates an account & EVD & eMall\\
+     SP\spcount & The EVD creates an account & EVD & eMma\\
      \hline
-     SP\spcount & The EVD in order to register inserts in the mobile app of the eMall the personal data (name, surname, email, password, payment details) & EVD & eMall \\
+     SP\spcount & The EVD in order to register inserts in the eMma the personal data (name, surname, email, password, payment details) & EVD & eMma \\
      \hline
-     SP\spcount & The EVD logs in using the email and the password & EVD & eMall\\
+     SP\spcount & The EVD logs in using the email and the password & EVD & eMma\\
      \hline
-     SP\spcount & The EVD accepts the terms of service in order to use the eMma & EVD & eMall\\
+     SP\spcount & The EVD accepts the terms of service in order to use the eMma & EVD & eMma\\
      \hline
-     SP\spcount & The EVD shares its location with the eMall & EVD & eMall\\
+     SP\spcount & The EVD shares its location with the eMma & EVD & eMma\\
      \hline
-     SP\spcount & The EVD confirms the payment from the mobile application of the eMall & EVD & eMall \\
+     SP\spcount & The EVD confirms the payment from the eMma & EVD & eMma \\
      \hline
-     SP\spcount & The EVD deletes previously inserted EVs from its account & EVD & eMall\\
+     SP\spcount & The EVD deletes previously inserted EVs from its account & EVD & eMma\\
      \hline
-     SP\spcount & The EVD updates the specifications of the EVs on its account & EVD & eMall \\
+     SP\spcount & The EVD updates the specifications of the EVs on its account & EVD & eMma \\
      \hline
-     SP\spcount & The EVD adds a new EV to its account & EVD & eMall \\
+     SP\spcount & The EVD adds a new EV to its account & EVD & eMma \\
      \hline
-     SP\spcount & The EVD updates personal data on its profile (such as email, payment) & EVD & eMall \\
+     SP\spcount & The EVD updates personal data on its profile (such as email, payment) & EVD & eMma \\
      \hline
-     SP\spcount & The EVD inserts the maximum and minimum current supported by the EV & EVD & eMall \\
+     SP\spcount & The EVD inserts the maximum and minimum current supported by the EV & EVD & eMma \\
      \hline
-     SP\spcount & The EVD inserts the maximum power supported by the EV & EVD & eMall \\
+     SP\spcount & The EVD inserts the maximum power supported by the EV & EVD & eMma \\
      \hline
-     SP\spcount & The EVD inserts the inlet type of the EV & EVD & eMall \\
+     SP\spcount & The EVD inserts the inlet type of the EV & EVD & eMma \\
      \hline
-     SP\spcount & The EVD inserts whether the EV is equipped with a built-in rectifier & EVD & eMall \\
+     SP\spcount & The EVD inserts whether the EV is equipped with a built-in rectifier & EVD & eMma \\
      \hline
-     SP\spcount & The EVD inserts the capacity of the battery in kWh & EVD & eMall \\
+     SP\spcount & The EVD inserts the capacity of the battery in kWh & EVD & eMma \\
      \hline
-     SP\spcount & The eMall shows to the EVD the map of the charging stations nearby his location & eMall & EVD \\
+     SP\spcount & The eMma shows to the EVD the map of the charging stations nearby his location & eMma & EVD \\
      \hline
-     SP\spcount & The EVD chooses a charging station from the map & EVD & eMall \\
+     SP\spcount & The EVD chooses a charging station from the map & EVD & eMma \\
      \hline
-     SP\spcount & The eMall shows the user the rating of the charging station & eMall & EVD \\
+     SP\spcount & The eMall shows the user the rating of the charging station & eMma & EVD \\
      \hline
-     SP\spcount & The EVD inserts the expected time when he plans to start the charging process & EVD & eMall \\
+     SP\spcount & The EVD inserts the expected time when he plans to start the charging process & EVD & eMma \\
      \hline
-     SP\spcount & The EVD inserts the expected time when he plans to end the charging process & EVD & eMall \\
+     SP\spcount & The EVD inserts the expected time when he plans to end the charging process & EVD & eMma \\
      \hline
-     SP\spcount & The eMall shows to the EVD the list of available chargers of the charging station & eMall & EVD \\
+     SP\spcount & The eMall shows to the EVD the list of available chargers of the charging station & eMma & EVD \\
      \hline
      SP\spcount & The eMall shows the charger type and its connectors  & eMci / eMma & EVD  \\
      \hline
-     SP\spcount & The EVD chooses the charger he wants to use from the list of available ones & EVD & eMall \\
+     SP\spcount & The EVD chooses the charger he wants to use from the list of available ones & EVD & eMma \\
      \hline
      SP\spcount & The eMall shows to the EVD the charger costs (per kWh, per minute, additional costs) & eMma/eMci & EVD \\
      \hline
-     SP\spcount & The eMall shows to the EVD the status of the charger & eMci & EVD \\
+     SP\spcount & The eMci shows to the EVD the status of the charger & eMci & EVD \\
      \hline
-     SP\spcount & The eMall shows to the EVD the battery level of the connected EV & eMci & EVD \\
+     SP\spcount & The eMci shows to the EVD the battery level of the connected EV & eMci / eMma & EVD \\
      \hline
      SP\spcount & During the charging session the eMall shows to the EVD the power output of the charger & eMci & EVD \\
      \hline
-     SP\spcount & During the charging session the eMall shows to the EVD the remaining time to complete the charging process & eMci & EVD \\
+     SP\spcount & During the charging session the eMall shows to the EVD the remaining time to complete the charging process & eMci / eMma & EVD \\
      \hline
      SP\spcount & The EVD starts the charging session from the charger & EVD & eMSP\\
      \hline
-     SP\spcount & \textit{The CPMS asks the DSO about the current available energy sources, their prices, and special offers} & CPMS & DSO \\ %Requirement
+     SP\spcount & The CPMS asks the DSO about the current available energy sources, their prices, and special offers & CPMS & DSO \\
      \hline
      SP\spcount & The DSO dynamically changes the price of electricity & DSO & CPMS \\
      \hline
@@ -212,7 +217,7 @@ The eMall is thought as a software that manages both the interaction with the bu
      \hline
      SP\spcount & The CPO selects the DSO from which to acquire energy & CPO & CPMS \\
      \hline
-     SP\spcount & The CPMS shows to the CPO the \textit{energy sources} and the relative current prices and special offers of the DSO & CPMS & DSO \\
+     SP\spcount & The CPMS shows to the CPO the energy sources and the relative current prices and special offers of the DSO & CPMS & DSO \\
      \hline
      SP\spcount & The CPO sets the cost of charging & CPO & CPMS \\
      \hline
@@ -234,7 +239,6 @@ The eMall is thought as a software that manages both the interaction with the bu
     \label{tab:Shared Phenomena}
     \end{longtable}
 \end{center}
-% TODO: Add SP for the EVSE events (it breaks during charging, an error occurs etc)
 
 \section{Definitions, Acronyms, Abbreviations}
 \label{sec:Definitions, Acronyms, Abbreviations}%
@@ -246,7 +250,7 @@ The eMall is thought as a software that manages both the interaction with the bu
     \item \textbf{CPMS}: Charging Point Management System
     \item \textbf{CPO}: Charge Point Operator
     \item \textbf{eMSP}: Electric Mobility Service Providers
-    \item \textbf{DMS}: Distribution Management System
+    %\item \textbf{DMS}: Distribution Management System
     \item \textbf{DSO}: Distribution System Operator
     \item \textbf{EV}: Electric Vehicle
     \item \textbf{EVD}: Electric Vehicle Driver
@@ -254,36 +258,34 @@ The eMall is thought as a software that manages both the interaction with the bu
     \item \textbf{HV}: High Voltage
     \item \textbf{LV}: Low Voltage
     \item \textbf{MV}: Medium Voltage
-    \item \textbf{SCADA}: Supervisory Control and Data Acquisition
-    \item \textbf{SCM}: Smart Charging Management 
-    \item \textbf{OMS}: Outage Management System
+    %\item \textbf{SCADA}: Supervisory Control and Data Acquisition
+    %\item \textbf{SCM}: Smart Charging Management 
+    %\item \textbf{OMS}: Outage Management System
     \item \textbf{AC}: Alternating current
     \item \textbf{DC}: Direct current
 \end{itemize}
 
-%TODO: keep the eMma and eMci or use only the given acronyms to simplify the reading?
 \subsection{Definitions}
 \begin{itemize}
-    \item \textbf{DSO}: typically the entity responsible for the operation and management of distribution networks – High, Medium and Low Voltage networks. For this purpose, the DSO typically owns systems such as Supervisory and Control Data Acquisition (SCADA)/ Distribution Management System (DMS) for the monitoring and general overview of the state of the network. It also owns other systems such as the Outage Management System (OMS) and Work Force Management System (WFMS) for addressing the network operation problems related with the continuity and quality of service.
+    \item \textbf{DSO}: typically the entity responsible for the operation and management of distribution networks – High, Medium and Low Voltage networks.
+    %For this purpose, the DSO typically owns systems such as Supervisory and Control Data Acquisition and Distribution Management System for the monitoring and general overview of the state of the network. It also owns other systems such as the Outage Management System and Work Force Management System (WFMS) for addressing the network operation problems related with the continuity and quality of service.
     \item \textbf{CPO}: entity that technically manages all the EV infrastructure assets, depending of existing country regulation – this role can be assured by the DSO or other entity.
     \item \textbf{eMSP}: is the entity that can explore the economic side of the EV charging infrastructure, namely by selling energy for charging purposes.
     \item \textbf{CPMS}: is a software system that manages the charge point infrastructure – can manage the technical and economic aspects of the charging infrastructures.
     \item  \textbf{EVD}: person or entity who owns an EV car and can use the public or private facilities for charging purposes.
-    \item \textbf{EVSE}: Electric Vehicle Supply Equipment. It is an equipment that is able to charge EV batteries with AC or DC loads and with different rated powers depending on the type of equipment.
-    % TODO: what does this mean (private parking)
-    \item  \textbf{Private parking}: can be a condominium, industry or other entity who has private owned EV
-    \item \textbf{Voltage sag}: a short-duration reduction in voltage of an electric power distribution system. It can be caused by high current demand or fault current elsewhere in the system.
-    \item \textbf{Voltage swell}: the opposite of voltage sag. Voltage swell, which is a momentary increase in voltage, happens when a heavy load turns off in a power system.
+    \item \textbf{EVSE (Electric Vehicle Supply Equipment)}: It is an equipment that is able to charge EV batteries with AC or DC loads and with different rated powers depending on the type of equipment.
+    %\item \textbf{Voltage sag}: a short-duration reduction in voltage of an electric power distribution system. It can be caused by high current demand or fault current elsewhere in the system.
+    %\item \textbf{Voltage swell}: the opposite of voltage sag. Voltage swell, which is a momentary increase in voltage, happens when a heavy load turns off in a power system.
     \item \textbf{Socket outlet}: the port on the electric vehicle supply equipment (EVSE) that supplies charging power to the vehicle
     \item \textbf{Plug}: the end of the flexible cable that interfaces with the socket outlet on the EVSE.
     \item \textbf{Cable}: a flexible bundle of conductors that connects the EVSE with the electric vehicle
     \item \textbf{Connector}: the end of the flexible cable that interfaces with the vehicle inlet
     \item \textbf{Vehicle inlet}: the port on the electric vehicle that receives charging power
-    \item \textit{Inverter}: It is a power electronic device or circuitry that changes direct current (DC) to alternating current (AC).
+    %\item \textit{Inverter}: It is a power electronic device or circuitry that changes direct current (DC) to alternating current (AC).
     \item \textbf{Rectifier}: an electrical device that converts alternating current (AC) to direct current (DC).
     \item \textbf{eMma}: the eMSP subsystem responsible for the EVD interaction from the mobile app
     \item \textbf{eMci}: the eMSP subsystem responsible for the EVD interaction at the charging point
-    \textit{ \item \textbf{additional costs}: overtime penalty, deposit for unregistered users}
+    \item \textbf{additional costs}: overtime penalty, deposit for unregistered users
     \item \textbf{Status of the charger}: can be free, occupied, booked and in maintenance
     \item \textbf{Smart meter}: is an electronic device that records information such as consumption of electric energy, voltage levels, current, and power factor; allow the reading of energy flow and real-time usage, and consequently permit the identification of interruptions in energy flow
 \end{itemize}

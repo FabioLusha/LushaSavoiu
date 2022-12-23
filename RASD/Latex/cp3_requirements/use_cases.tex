@@ -1,11 +1,9 @@
-In this section we present the most important use cases of the eMall. Every use case has also associated a sequence diagram, but we decided to present only the most relevant situations of the use case in the sequence diagrams, so they do not contain all the possible alternatives. We also provide some use cases diagrams in order to better show the relationship between the actors and the actions that they can perform in the system, displaying the features and the capabilities of the application.
-The following use cases are also related to the scenarios explained in the last chapter, formalizing the situations previously described and further analyzing the present features.
-The use cases are also accompanied by a sequence diagram, which better represents the event flow, but we tried not to add too much details, that clusters up the diagram and makes it difficult to read.
+In this section we present the most important use cases of the eMall. To each use case is associated a corresponding sequence diagram, but we decided to present only the most relevant situations of the use case in the sequence diagrams, so they do not contain all the possible alternatives. We also provide some use cases diagrams in order to better show the relationship between the actors and the actions that they can perform in the system, displaying the features and the capabilities of the application.
 
 \subsection{Unregistered and registered EVD's use cases}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth, trim = {3cm 2cm 3cm 1cm}, clip]{Images/cp3/UseCaseDiagramEVD.png}
+    \includegraphics[width=0.9\textwidth, trim = {3cm 2cm 3cm 1cm}, clip]{Images/cp3/UseCaseDiagramEVD.png}
     \caption{Use cases diagram of the registered and unregistered EVD}
 \end{figure}
 
@@ -59,7 +57,7 @@ The use cases are also accompanied by a sequence diagram, which better represent
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth, trim={0 0 10cm 0}, clip]{Images/cp3/seqDiagrams/RegisterEVD.pdf}
+    \includegraphics[width=\textwidth, trim={0 6cm 0 0}, clip]{Images/cp3/seqDiagrams/RegisterEVD.pdf}
     \caption{RegisterEVD sequence diagram}
 \end{figure}
 
@@ -128,14 +126,11 @@ The use cases are also accompanied by a sequence diagram, which better represent
                 \end{itemize}
             \end{adjustwidth}
         4. EVD selects the charging point that suits his needs \newline
-        % TODO: @Bianca should we put a time limit on the possibility to book a charge
-        % I think not, but did we wrote something about this in the precedent parts of the document?
-        % TODO: @Fabio check if there is a specfication on the secenarios
-        % Missing element : time frame
-        5. eMma shows to the EVD a summary of the booking and asks the EVD for confirmation \newline
-        6. EVD confirms the booking \newline
-        7. The system processes the booking request \newline
-        8. eMma notifies the EVD about the success of the booking operation\\
+        5. The EVD set the date, the starting and ending time of the charging session
+        6. eMma shows to the EVD a summary of the booking and asks the EVD for confirmation \newline
+        7. EVD confirms the booking \newline
+        8. The system processes the booking request \newline
+        9. eMma notifies the EVD about the success of the booking operation\\
      \hline
      Exit condition &  Booking is registered and the charging point socket changes status to reserved\\
      \hline
@@ -151,11 +146,11 @@ The use cases are also accompanied by a sequence diagram, which better represent
 \end{center}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth, trim={0 0 0 0}, clip]{Images/cp3/seqDiagrams/BookCharginPoint.pdf}
-    \caption{BookingCharginPoint sequence diagram}
+    \includegraphics[width=\textwidth, trim={0 3cm 0 0}, clip]{Images/cp3/seqDiagrams/BookChargingPoint.pdf}
+    \caption{BookingChargingPoint sequence diagram}
 \end{figure}
 
-\paragraph{Cancel a charging booking}
+\paragraph{Cancel a booking}
 \begin{center}
     \begin{longtable}{p{4cm} p{11cm}}
     \multicolumn{2}{r}{\itshape{continue on the next page}}\\
@@ -163,17 +158,17 @@ The use cases are also accompanied by a sequence diagram, which better represent
     \\
     \endlastfoot
     \hline
-     Use case name &  CancelChargingBooking\\
+     Use case name &  CancelBooking\\
      \hline
      Actor & EVD \\
      \hline
      Entry condition &   The EVD is logged in the eMma and on the homepage\\
      \hline
      Event flow &
-        1. EVD selects imminent charging section \newline
-        2. eMma shows an entry with details about the imminent charging booking \newline
+        1. EVD selects upcoming charging section \newline
+        2. eMma shows an entry with details about the upcoming charging booking \newline
         3. EVD selects the entry \newline
-        4. eMma allows the EVD the possibility to cancel the charging booking \newline
+        4. eMma allows the EVD the possibility to cancel the booking \newline
         5. EVD selects to cancel the booking \newline
         6. eMma asks for confirmation \newline
         7. EVD confirms \newline
@@ -182,23 +177,24 @@ The use cases are also accompanied by a sequence diagram, which better represent
      Exit condition &  The booking is cancelled and the previously reserved charging point socket changes status to free in the booked time-frame\\
      \hline
      Exceptions &
-        If the booking confirmation fails, eMma shall notify the user about the occurrence of an error and should bring the view back to the list of availables charging points
+        If the booking confirmation fails, eMma shall notify the user about the occurrence of an error and should bring the view back to the list of available charging points
      \\
      \hline
      Special requirements & 
         The EVD is notified about the booking cancellation in less than 2 seconds, for the operation to be perceived as immediate\\
      \hline
-    \caption{CancelChargingBooking}
-    \label{tab:CancelChargingBooking}
+    \caption{CancelBooking}
+    \label{tab:CancelBooking}
     \end{longtable}
 \end{center}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width= 0.8\textwidth, trim={1.5cm 3.5cm 3cm 0}, clip]{Images/cp3/seqDiagrams/CancelChargingBooking.pdf}
-    \caption{CancelChargingBooking sequence diagram}
+    \includegraphics[width= 0.8\textwidth, trim={1.5cm 3.5cm 3cm 1cm}, clip]{Images/cp3/seqDiagrams/CancelBooking.pdf}
+    \caption{CancelBooking sequence diagram}
 \end{figure}
 
+\clearpage
 \paragraph{Visualize charging history}
 \begin{center}
     \begin{longtable}{p{4cm} p{11cm}}
@@ -215,7 +211,7 @@ The use cases are also accompanied by a sequence diagram, which better represent
      \hline
      Event flow & 
         1. EVD selects to view the charging history section \newline
-        2. eMma shows a view containing details about the imminent charge booking with it's details and a list \newline
+        2. eMma shows a view containing details about the upcoming charge booking with it's details and a list \newline
         3. EVD confirms to see the charging history \newline
         4. eMma shows a chronologically ordered list of all the previous charging sessions processed throught the system. Each element on the list contains details about:
             \begin{adjustwidth}{0.5cm}{}
@@ -252,6 +248,7 @@ The use cases are also accompanied by a sequence diagram, which better represent
     \caption{VisualizeChargingHistory sequence diagram}
 \end{figure}
 
+\clearpage
 \paragraph{Start a charging session}
 \begin{center}
     \begin{longtable}{p{4cm} p{11cm}}
@@ -277,7 +274,8 @@ The use cases are also accompanied by a sequence diagram, which better represent
      \hline
      Exceptions &   
         a. If the EVD doesn't insert the correct code, the eMall doesn't unlock the charging point and the eMma returns a warning message, allowing the user to reinsert the code\newline
-        b. If the user doesn't insert the plug in less than 5 minutes, the operation is deleted, and the charging point status return to free \\ 
+        b. If the user doesn't insert the plug in less than 5 minutes, the operation is deleted, and the charging point status return to free \newline
+        c. If the EVD is not registered, when confirming the code, he has to make a deposit in order to use the charger\\ 
      \hline
      Special requirements & After inserting the code, the eMall does all the necessary checks and changes the status of the charging point in less than 2 seconds, so the service can be perceived as fast and responsive. Also, the system has to start the charging of the EVD in less than 2 seconds, for the same reason \\
      \hline
@@ -292,6 +290,7 @@ The use cases are also accompanied by a sequence diagram, which better represent
     \caption{ChargeNow sequence diagram}
 \end{figure}
 
+\clearpage
 \paragraph{Update profile details adding a new vehicle}
 \begin{center}
     \begin{longtable}{p{4cm} p{11cm}}
@@ -330,7 +329,6 @@ The use cases are also accompanied by a sequence diagram, which better represent
     \end{longtable}
 \end{center}
 
-\clearpage
 \paragraph{Update profile details deleting vehicle}
 \begin{center}
     \begin{longtable}{p{4cm} p{11cm}}
@@ -383,7 +381,7 @@ The use cases are also accompanied by a sequence diagram, which better represent
      \hline
      Entry condition & The EVD is logged in the eMma and on the homepage \\
      \hline
-     Event flow &   1. he EVD enters on his profile page \newline
+     Event flow &   1. The EVD enters on his profile page \newline
                     2. The system shows the profile page with personal information and EV's details \newline
                     3. The EVD selects the update option \newline
                     4. The eMma shows a page with different buttons from which to choose the update action \newline
@@ -392,9 +390,9 @@ The use cases are also accompanied by a sequence diagram, which better represent
                     7. The EVD can modify the elements of the form, for example the email, the name, the payment details \newline
                     8. The EVD, after modifying some data, confirms the operation and submits the form \newline
                     9. The eMall checks (internally and externally using APIs) and updates the data that have been changed, saving the correct information associated to the EVD's profile \newline
-                    10. The system reloads the profile page with the new personal data \\
+                    10. The system reloads the profile page with the new data \\
      \hline
-     Exit condition & The system saves the new data, discarding the old ones, and the eMma reloads the profile page with the updated personal details\\
+     Exit condition & The system saves the new data, discarding the old ones, and the eMma reloads the profile page with the updated details\\
      \hline
      Exceptions &   
         a. If the EVD doesn't change any data of the form, after clicking the 'Ok' button the system reloads the profile page showing all the data present before the operation \newline
@@ -407,8 +405,7 @@ The use cases are also accompanied by a sequence diagram, which better represent
     \label{tab:ModifyProfilePersonalData}
     \end{longtable}
 \end{center}
-
-We only show a sequence diagram for all the use cases regarding the modification of the profile, because even if the data which are modified are different and some actions and checks can change, overall the event flow is the same in all of them. So, the following diagram treats only the action in a general way, representing with it all the possible operations. 
+We show only a sequence diagram for all the use cases regarding the modification of the profile, because even if the data which are modified are different and some actions and checks can change, overall the event flow is the same in all of them. So, the following diagram treats only the action in a general way, representing with it all the possible operations.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{Images/cp3/ModifyProfileSD.png}
@@ -429,11 +426,10 @@ We only show a sequence diagram for all the use cases regarding the modification
      \hline
      Entry condition & The EVD is on the eMma homepage \\
      \hline
-     Event flow &   1. On the homepage the eMma shows the map of the territory, based on the location shared by the mobile phone of the EVD \newline
-                    2. The EVD clicks on the map \newline
-                    3. The map shows the charging stations nearby the position on which the EVD clicked \newline
-                    4. The EVD clicks on one of the charging stations presented on the map \newline
-                    5. The eMma shows a page with the information related to the selected charging station:
+     Event flow &   1. On the homepage the eMma shows the map of the territory, based on the location shared                by the mobile phone of the EVD \newline
+                    2. The map shows the charging stations nearby the position of the EVD \newline
+                    3. The EVD clicks on one of the charging stations presented on the map \newline
+                    4. The eMma shows a page with the information related to the selected charging station:
                     \begin{adjustwidth}{0.5cm}{}
                         \begin{itemize}
                                 \item The name of the charging station
@@ -446,7 +442,7 @@ We only show a sequence diagram for all the use cases regarding the modification
                                 \item the presence of any special offer
                         \end{itemize}
                     \end{adjustwidth}   
-                    %Add a line ....
+                    5. The EVD can, also, insert other locations in which to visualize the stations on the map
      \\
      \hline
      Exit condition & The EVD exits the homepage or closes the application \\
@@ -454,14 +450,19 @@ We only show a sequence diagram for all the use cases regarding the modification
      Exceptions &   a. If the EVD clicks on the map on an area without charging stations, no charging station will appear on the map \newline
                     b. If at any time the user wants to exit the eMma, the application allows it, and at the following access the action restarts from the homepage \\
      \hline
-     Special requirements & After the EVD clicks on the map, the charging stations are shown in less than 2 seconds. As well, when the EVD clicks on the charging stations the related data are shown in less than 2 seconds, so the application can be perceived as fast and responsive \\
+     Special requirements & After the EVD clicks on the map, the charging stations are shown in less than 2 seconds. As well, when the EVD clicks on the charging stations the related data are shown in less than 2 seconds, so the application can be perceived as fast \\
      \hline
     \caption{VisualizeStations}
     \label{tab:VisualizeStations}
     \end{longtable}
 \end{center}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Images/cp3/seqDiagrams/VisualizeStations.png}
+    \caption{VisualizeStations sequence diagram}
+\end{figure}
 
-%Use case TerminateChargingProcess
+\clearpage
 \paragraph{Terminate charging process}
 \begin{center}
     \begin{longtable}{p{4cm} p{11cm}}
@@ -474,28 +475,51 @@ We only show a sequence diagram for all the use cases regarding the modification
      \hline
      Actor & eMma \\
      \hline
-     Entry condition & Charging is almost completed \\
+     Entry condition & Charging is almost completed (over 80\%) \\
      \hline
-     Event flow &   1.
+     Event flow &   1. The eMma sends a notification that the charging is almost completed \newline
+                    2. The EVD opens the notification \newline
+                    3. The EVD confirms the termination \newline
+                    4. The eMall stops the charging session \newline
+                    5. The eMall initiates the payment operation \newline
+                    6. The EVD selects from the eMma the payment method and confirms the operation \newline
+                    7. The eMall communicates with external APIs in order to complete the payment \newline
+                    8. The eMall sends a message notifying the successful payment \newline
+                    9. The EVD confirms the termination of the operation \newline
+                    10. The eMma asks for a review of the service \newline
+                    11. The EVD can leave a review and a comment \newline
+                    12. The EVD unplugs the EV from the charging point
      \\
      \hline
-     Exit condition & The EVD exits the homepage or closes the application \\
+     Exit condition & The EVD unplugs the EV after paying for the charging session\\
      \hline
-     Exceptions &   a.\\
+     Exceptions &   
+        a. If the EVD doesn't unplug the EV in less than 10 minutes, once the EV is fully charged, at the original price is added an additional cost for each minute in which the charging point is occupied \newline
+        b. If the EVD wants to stop the charge at any moment, even if the battery is not completely charged he can do so, paying for the obtained service \newline
+        c. If the payment is not successful the eMma sends a warning and requests again the payment method
+        \\
      \hline
-     Special requirements & \\
+     Special requirements & After every confirmation the system responds in less than 2 seconds. The eMall also needs less than 20 seconds to complete the payment, communicating with external APIs \\
      \hline
     \caption{TerminateCharging}
     \label{tab:TerminateCharging}
     \end{longtable}
 \end{center}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Images/cp3/seqDiagrams/TerminateCharging.png}
+    \caption{TerminateCharging sequence diagram}
+\end{figure}
 
 \subsection{CPO's use cases}
 \begin{figure}[H]
     \centering
-    \includegraphics[width= 0.9\textwidth, trim={2cm 5cm 5cm 3cm}, clip]{Images/cp3/UseCaseDiagramCPO.png}
+    \includegraphics[width= 0.9\textwidth, trim={1cm 2cm 2cm 1cm}, clip]{Images/cp3/UseCaseDiagramCPO.png}
     \caption{Use cases diagram of the CPO}
 \end{figure}
+We can notice that the CPO actor activities are concentrated on the managing of the charging stations. All the operations specify the general one 'ManageStations', and there can be many others beyond the ones that are presented here, because the CPO can update and add a lot of data, which are then sent to the CPMS. We decided to concentrate our analyses on the main feature that regard the system, such as updates regarding the DSO from which to acquire energy, updates of the prices and the special offers and other essential operations regarding the stations and the related charging points and batteries.
+
+\clearpage
 \paragraph{Manage the charging stations}
 \begin{center}
     \begin{longtable}{p{4cm} p{11cm}}
@@ -515,17 +539,18 @@ We only show a sequence diagram for all the use cases regarding the modification
         2. The CPO clicks on a charging station or on a notification \newline 
         3. The system shows a form with the details of the charging station and if there are notifications regarding the station the interested parts of the form are highlighted in red \newline
         4. The CPO can click on any part of the form and modify the data of the station \newline
-        5. The CPO clicks the 'Confirm' button \newline
+        5. The CPO confirms the operation \newline
         6. The system checks and saves the new data related to the charging station \newline
         7. The system sends a notification message informing of the success of the operation \newline
         8. The system loads a page showing the charging station with the new associated information\\
      \hline
      Exit condition &  The CPO closes the page loaded by the system with the updated data of the charging station, returning to the homepage \\
      \hline
-     Exceptions &   a. If the CPO doesn't modify anything on the form before submitting it, the eMall sends a                       message which informs that the data have not been modified, and returns to the homepage \newline
-                    b. If at any time the CPO wants to exit, the application allows it, and no changes will be applied if the procedure wasn't completed \\
+     Exceptions &   
+        a. If the CPO doesn't modify anything on the form before submitting it, the eMall sends a message which informs that the data have not been modified, and returns to the homepage \newline
+         b. If at any time the CPO wants to exit, the application allows it, and no changes will be applied if the procedure wasn't completed \\
      \hline
-     Special requirements & After the CPO clicks on the 'Confirm' button, the charging station with the related details is updated and shown on a new page in less than 2 seconds, in order for the application to be perceived as fast and responsive \\
+     Special requirements & After the CPO confirms the operation, the charging station with the related details is updated and shown on a new page in less than 2 seconds, in order for the application to be perceived as fast and responsive \\
      \hline
     \caption{ManageStations}
     \label{tab:ManageStations}
@@ -538,7 +563,9 @@ We only show a sequence diagram for all the use cases regarding the modification
     \caption{ManageStations sequence diagram}
 \end{figure}
 
-The use case about the CPO managing the charging stations, is a generic use case, that can be further analyzed considering the actions that the CPO actually performs on the system, to manage the stations. In the following use cases, we specialize some of these interactions, showing available functionalities of the web application of the eMall. The sequence diagrams of the next use cases are similar to the one reported for the general interaction of the CPO with the system, so they will not be added to this document.
+The use case about the CPO managing the charging stations, is a generic use case, that can be further analyzed considering the actions that the CPO actually performs on the system, to manage the stations. In the following use cases, we specialize some of these interactions, as already mentioned at the beginning of this section, showing available functionalities of the web application of the eMall. 
+%TODO: @Fabio sequence diagrams of the other CPO use cases or leave this line
+%The sequence diagrams of the next use cases are similar to the one reported for the general interaction of the CPO with the system, so they will not be added to this document.
 
 \paragraph{Update the DSO of a charging station}
 \begin{center}
@@ -556,13 +583,13 @@ The use case about the CPO managing the charging stations, is a generic use case
      \hline
      Event flow &   1. On the homepage the eMall shows to the CPO the charging stations associated to the company                   registration and any notification on the stations \newline
                     2. The CPO clicks on a charging station \newline 
-                    3. The system shows a form with the details of the charging station \newline
+                    3. The system shows a form with the details of the station \newline
                     4. The CPO clicks on the 'DSO' cell present in the form \newline
                     5. The system shows a new sub-page with the available DSOs and the respective information: for each DSO the page shows the energy resources, their capacity and their prices \newline
                     6. The CPO selects the DSO and the energy source he wants to use for the charging station \newline
-                    7. The CPO clicks on the 'Ok' button \newline
-                    8. The web application returns to the form of the charging station with the new selected DSO information replacing the previous one \newline
-                    9. The CPO clicks the 'Confirm' button \newline
+                    7. The CPO confirms the operation \newline
+                    8. The web application returns to the form of the charging station with the new selected DSO information \newline
+                    9. The CPO confirms the operation \newline
                     10. The system checks and saves the new data related to the charging station \newline
                     11. The system sends a notification message informing of the success of the operation \newline
                     12. The system loads a page showing the charging station with the new associated information\\
@@ -572,7 +599,7 @@ The use case about the CPO managing the charging stations, is a generic use case
      Exceptions &   a. If the CPO doesn't modify anything on the form before submitting it, the eMall sends a                       message which informs that the data have not been modified, and returns to the homepage \newline
                     b. If at any time the CPO wants to exit, the application allows it, and no changes will be applied if the procedure wasn't completed \\
      \hline
-     Special requirements & After the CPO clicks on the 'Confirm' button, the charging station with the related details is updated and shown on a new page in less than 2 seconds, in order for the application to be perceived as fast and responsive \\
+     Special requirements & After the CPO confirms the operation, the charging station with the related details is updated and shown on a new page in less than 2 seconds, in order for the application to be perceived as fast and responsive \\
      \hline
     \caption{UpdateDSO}
     \label{tab:UpdateDSO}
@@ -594,10 +621,10 @@ The use case about the CPO managing the charging stations, is a generic use case
      Entry condition & The CPO is logged in the web application of the eMall and on the homepage \\
      \hline
      Event flow &   1. On the homepage the eMall shows to the CPO the charging stations associated to the company                   registration and any notification on the stations \newline
-                    2. The CPO clicks on a charging station \newline 
+                    2. The CPO selects a charging station \newline 
                     3. The system shows a form with the details of the charging station \newline
-                    4. The CPO changes the price of the charging station from the form \newline
-                    5. The CPO clicks the 'Confirm' button \newline
+                    4. The CPO changes the price of one charging point of the station from the form \newline
+                    5. The CPO confirms the operation \newline
                     6. The system checks and saves the new data related to the charging station \newline
                     7. The system sends a notification message informing of the success of the operation \newline
                     8. The system loads a page showing the charging station with the new associated information\\
@@ -608,7 +635,7 @@ The use case about the CPO managing the charging stations, is a generic use case
                     b. If the price doesn't respect a level fixed by the company policy, the system sends an error message, informing the CPO that the price is to high or too low, and the CPO has to modify again the form, otherwise no change will be applied \newline
                     c. If at any time the CPO wants to exit, the application allows it, and no changes will be applied if the procedure wasn't completed \\
      \hline
-     Special requirements & After the CPO clicks on the 'Confirm' button, the charging station with the related details is updated and shown on a new page in less than 2 seconds, in order for the application to be perceived as fast and responsive\\
+     Special requirements & After the CPO confirms the operation, the charging station with the related details is updated and shown on a new page in less than 2 seconds, in order for the application to be perceived as fast and responsive\\
      \hline
     \caption{UpdatePrice}
     \label{tab:UpdatePrice}
@@ -631,27 +658,27 @@ The use case about the CPO managing the charging stations, is a generic use case
      Entry condition & The CPO is logged in the web application of the eMall and on the homepage \\
      \hline
      Event flow &   1. On the homepage the eMall shows to the CPO the charging stations associated                 to the company registration and any notification on the stations \newline
-                    2. The CPO clicks on a charging station \newline 
+                    2. The CPO selects a charging station \newline 
                     3. The system shows a form with the details of the charging station \newline
-                    4. The CPO sets a promotion for the charging station, selecting it from the ones available, for example from a combo box \newline
-                    5. The CPO clicks the 'Confirm' button \newline
+                    4. The CPO sets a promotion for the charging station, selecting it from the ones available, for example from a combo box (it is also possible to set a promotion for the single charging point of the station) \newline
+                    5. The CPO confirms the operation \newline
                     6. The system checks and saves the data related to the new promotion set for the charging station \newline
                     7. The system sends a notification message informing of the success of the operation \newline
                     8. The system loads a page showing the charging station with the new associated information\\
      \hline
      Exit condition &  The CPO closes the page loaded by the system with the updated data of the charging station, returning to the homepage \\
      \hline
-     Exceptions &   a. If the CPO doesn't modify anything on the form before submitting it, the                     eMall sends a message which informs that the data have not been modified, and                  returns to the homepage \newline
-                    b. If the promotion doesn't respect the parameters fixed by the company policy, the system sends an error message, informing the CPO that the promotion is not acceptable, and the CPO has to modify again the form, otherwise no change will be applied \newline
-                    c. If at any time the CPO wants to exit, the application allows it, and no changes will be applied if the procedure wasn't completed \\
+     Exceptions &   
+        a. If the CPO doesn't modify anything on the form before submitting it, the eMall sends a message which informs that the data have not been modified, and returns to the homepage \newline
+        b. If the promotion doesn't respect the parameters fixed by the company policy, the system sends an error message, informing the CPO that the promotion is not acceptable, and the CPO has to modify again the form, otherwise no change will be applied \newline
+        c. If at any time the CPO wants to exit, the application allows it, and no changes will be applied if the procedure wasn't completed \\
      \hline
-     Special requirements & After the CPO clicks on the 'Confirm' button, the charging station with the related details is updated and shown on a new page in less than 2 seconds, in order for the application to be perceived as fast and responsive\\
+     Special requirements & After the CPO confirms the operation, the charging station with the related details is updated and shown on a new page in less than 2 seconds\\
      \hline
     \caption{AddPromotion}
     \label{tab:AddPromotion}
     \end{longtable}
 \end{center}
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth, trim={0 3cm 6cm 0}, clip]{Images/cp3/seqDiagrams/AddPromotion.pdf}
@@ -677,7 +704,7 @@ The use case about the CPO managing the charging stations, is a generic use case
                     3. The system shows a form with the details of the charging station \newline
                     4. The CPO clicks the 'Delete charging station' button \newline
                     5. The system sends a warning message and asks for confirmation, because this is a delicate operation \newline
-                    6. The CPO clicks the 'Confirm' button \newline
+                    6. The CPO confirms the operation \newline
                     7. The system deletes the charging station from the information related to the company \newline
                     8. The system sends a notification message informing of the success of the operation \newline
                     9. The system reloads the homepage, without the deleted charging station\\
@@ -687,14 +714,13 @@ The use case about the CPO managing the charging stations, is a generic use case
      Exceptions &   a. If the CPO doesn't confirm the cancellation of the charging station, after 5 minutes, the                    system reloads the homepage, without applying any change \newline
                     b. If at any time the CPO wants to exit, the application allows it, and no changes will be applied if the procedure wasn't completed \\
      \hline
-     Special requirements & After the CPO clicks on the 'Confirm' button, the charging station will be deleted from the information related to the company and the homepage will be shown in less than 2 seconds, in order for the application to be perceived as fast and responsive \\
+     Special requirements & After the CPO confirms the operation, the charging station will be deleted from the information related to the company and the homepage will be shown in less than 2 seconds, in order for the application to be perceived as fast\\
      \hline
     \caption{DeleteChargingStation}
     \label{tab:DeleteChargingStation}
     \end{longtable}
 \end{center}
 
-\clearpage
 \paragraph{Add a charging station}
 \begin{center}
     \begin{longtable}{p{4cm} p{11cm}}
@@ -711,7 +737,7 @@ The use case about the CPO managing the charging stations, is a generic use case
      \hline
      Event flow &   1. The CPO selects the button 'Add charging station' \newline
                     2. The system shows a form to fill up with the data related to the new charging station: the code of the station, the position, the charging points, the available sockets, the prices, the batteries of the station and other details for each charging point \newline
-                    3. The CPO completes the form and clicks the 'Confirm' button \newline
+                    3. The CPO completes the form and confirms \newline
                     4. The system checks and saves the new data related to the charging station \newline
                     5. The system sends a notification message informing of the success of the operation \newline
                     6. The system loads a page showing the new charging station with the associated information\\
@@ -721,7 +747,7 @@ The use case about the CPO managing the charging stations, is a generic use case
      Exceptions &   a. If the CPO doesn't fill up all the mandatory data of the form before submitting it, the eMall                sends a message, which informs what other data are required, and returns to the form that the                   CPO can continue to complete \newline
                     b. If at any time the CPO wants to exit, the application allows it, and no changes will be applied if the procedure wasn't completed \\
      \hline
-     Special requirements & After the CPO clicks on the 'Confirm' button, the new charging station with the related details is added to the data related to the company, and shown on a new page in less than 2 seconds, in order for the application to be perceived as fast and responsive \\
+     Special requirements & After the CPO confirms the operation, the new charging station with the related details is added to the data related to the company, and shown on a new page in less than 2 seconds, in order for the application to be perceived as fast and responsive \\
      \hline
     \caption{AddChargingStation}
     \label{tab:AddChargingStation}
@@ -747,7 +773,7 @@ The use case about the CPO managing the charging stations, is a generic use case
                     3. The system shows a form with the details of the charging station \newline
                     4. The CPO clicks the 'Add charging point' button \newline
                     5. The system shows a new form to fill up with the data related to the new charging point: the code of the charging point, the available sockets, the maximum and minimum output capacity and other details \newline
-                    6. The CPO completes the form and clicks the 'Confirm' button \newline
+                    6. The CPO completes the form and confirms the operation \newline
                     7. The system checks and saves the new charging point related to the charging station \newline
                     8. The system sends a notification message informing of the success of the operation \newline
                     9. The system loads a page showing the charging stations with the new associated charging point\\
@@ -757,7 +783,7 @@ The use case about the CPO managing the charging stations, is a generic use case
      Exceptions &   a. If the CPO doesn't fill up all the mandatory data of the form                    before submitting it, the eMall sends a message, which informs                     what other data are required, and returns to the form, that the                    CPO can continue to complete \newline
                     b. If at any time the CPO wants to exit, the application allows it, and no changes will be applied if the procedure wasn't completed \\
      \hline
-     Special requirements & After the CPO clicks on the 'Confirm' button, the new charging point of the station, with the related details, is added to the data related to the company, and shown on a new page in less than 2 seconds, in order for the application to be perceived as fast and responsive \\
+     Special requirements & After the CPO confirms the operation, the new charging point of the station, with the related details, is added to the data related to the company, and shown on a new page in less than 2 seconds, in order for the application to be perceived as fast and responsive \\
      \hline
     \caption{AddChargingPoint}
     \label{tab:AddChargingPoint}
@@ -782,7 +808,7 @@ The use case about the CPO managing the charging stations, is a generic use case
                     2. To see more specific information the CPO click on 'Visualization' button \newline 
                     3. The system shows a list with all the elements that can be visualized in form of a graph regarding the managed charging stations \newline
                     4. The CPO selects the information that is interested in, for example the peak hours and energy requests \newline
-                    5. The CPO clicks the 'Confirm' button \newline
+                    5. The CPO confirms the operation \newline
                     6. The system processes the chosen data regarding all the stations \newline
                     7. The system loads a new page in which shows some graphical representations of the data \\
      \hline
@@ -791,7 +817,7 @@ The use case about the CPO managing the charging stations, is a generic use case
      Exceptions &   a. If the CPO doesn't select anything on the list before submitting it, the eMall sends a                       message which informs that nothing can be visualized, and returns to the homepage \newline
                     b. If at any time the CPO wants to exit, the application allows it, and no changes will be applied if the procedure wasn't completed \\
      \hline
-     Special requirements & After the CPO clicks on the 'Confirm' button, the graphical visualizations are shown on a new page in less than 2 minutes, in order for the system to have enough time to process a lot of the present data, and show an approximated solution in an acceptable time \\
+     Special requirements & After the CPO confirms the operation, the graphical visualizations are shown on a new page in less than 2 minutes, in order for the system to have enough time to process a lot of the present data, and show an approximated solution in an acceptable time \\
      \hline
     \caption{VisualizeGraphicalInformation}
     \label{tab:VisualizeGraphicalInformation}
@@ -806,7 +832,7 @@ The use case about the CPO managing the charging stations, is a generic use case
     \\
     \endlastfoot
     \hline
-     Use case name &  SolveNotification\\ %EmptyBatteryNotification
+     Use case name &  SolveNotification\\
      \hline
      Actor & CPO \\
      \hline
@@ -817,8 +843,8 @@ The use case about the CPO managing the charging stations, is a generic use case
                     3. The system shows a form with the details of the charging station, with the data related to the notification highlighted in red  \newline
                     4. The CPO clicks on the battery associated to the charging station, that is highlighted in red \newline
                     5. When clicking on a red element, the system shows a notification message, informing the CPO about the problem or the changes undergone to that element of the station \newline
-                    6. The CPO changes the details of the battery, selecting a DSO from which to acquire energy, because in this case the notification was about the battery being empty \newline
-                    7. The CPO clicks the 'Confirm' button \newline
+                    6. The CPO solves the notification making some changes on the form \newline
+                    7. The CPO confirms the operation \newline
                     8. The system checks and saves the new data related to the charging station \newline
                     9. The system sends a notification message informing of the success of the operation and deletes the notification message present before the operation \newline
                     10. The system loads a page showing the charging station with the new associated information\\
@@ -829,10 +855,77 @@ The use case about the CPO managing the charging stations, is a generic use case
                     b. If the CPO changes the form, but not the details regarding the notification, the eMall will apply the operation, after the submitting of the form, but will maintain the notification message in the system \newline 
                     c. If at any time the CPO wants to exit, the application allows it, and no changes will be applied if the procedure wasn't completed \\
      \hline
-     Special requirements & After the CPO clicks on the 'Confirm' button, the charging station with the related details is updated and shown on a new page in less than 2 seconds, in order for the application to be perceived as fast and responsive \\
+     Special requirements & After the CPO confirms the operation, the charging station with the related details is updated and shown on a new page in less than 2 seconds, in order for the application to be perceived as fast and responsive \\
      \hline
     \caption{SolveNotification}
     \label{tab:SolveNotification}
+    \end{longtable}
+\end{center}
+
+%Use case UseEnergyFromBattery
+\paragraph{Decide to use the battery}
+\begin{center}
+    \begin{longtable}{p{4cm} p{11cm}}
+    \multicolumn{2}{r}{\itshape{continue on the next page}}\\
+    \endfoot 
+    \\
+    \endlastfoot
+    \hline
+     Use case name &  UseEnergyFromBattery\\
+     \hline
+     Actor & CPO \\
+     \hline
+     Entry condition & The charging station is equipped with a battery \\
+     \hline
+     Event flow &
+        1. CPO selects to change the energy source used by the charging points \newline
+        2. CPMS shows to the CPO the list of available energy sources \newline
+        3. CPO selects the battery as energy source \newline
+        4. The system accept the instruction and processes the request \newline
+        5. The system notifies the successful operation
+     \\
+     \hline
+     Exit condition &  The system switches to the battery as energy source for the charging points\\
+     \hline
+     Exceptions & 
+        a. If the battery is empty the system won't allow the user to selects it as energy source \newline
+        b. If the system can't switch to the battery energy source then an error is returned to the user\\
+     \hline
+     Special requirements &
+        While changing the energy source to battery the system must show to the user the status of the processing in real-time\\
+     \hline
+    \caption{UseEnergyFromBattery}
+    \label{tab:UseEnergyFromBattery}
+    \end{longtable}
+\end{center}
+\clearpage
+
+%Use case StoreEnergyInBattery
+\paragraph{Decide to store energy in the battery}
+\begin{center}
+    \begin{longtable}{p{4cm} p{11cm}}
+    \multicolumn{2}{r}{\itshape{continue on the next page}}\\
+    \endfoot 
+    \\
+    \endlastfoot
+    \hline
+     Use case name &  StoreEnergyInBattery\\
+     \hline
+     Actor & CPO \\
+     \hline
+     Entry condition & The charging station is equipped with a battery  \\
+     \hline
+     Event flow &   1.
+     \\
+     \hline
+     Exit condition &  \\
+     \hline
+     Exceptions &   a.\\
+     \hline
+     Special requirements & \\
+     \hline
+    \caption{StoreEnergyInBattery}
+    \label{tab:StoreEnergyInBattery}
     \end{longtable}
 \end{center}
 \clearpage
