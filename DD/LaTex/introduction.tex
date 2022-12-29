@@ -1,0 +1,99 @@
+\section{Purpose}
+\label{sec:purpose}%
+Widespread electrification of transport is the most efficient way to reach Europe’s climate objectives for the sector and electric charging is the main asset to overcome the obstacles of the take-up of electric vehicles (EVs). EVs can reduce CO2 by an estimated annual 600,000 tons by 2030, going towards a carbon neutral Europe, and the importance of this aim raises the problem of having efficient systems that manage the charging services. The eMall is thought as an all-encompassing application that oversees the entire process from the user interaction to the effective recharge of the EV's battery.
+
+The main goal we want to achieve with the eMall software is to help the EVDs (electric vehicle drivers) to have better access to recharge and to be able to book a charging point in order to avoid interference with his daily plans. Another important purpose of the system is to safeguard not only the users but also the providers of the service and this is made through privacy agreements and the actual interaction, that guarantees to supervise both interested parts, in order to get the best possible service and pay for it accordingly, having also a technical and economic exploitation of the charging infrastructures.
+
+In this context there is an increase in the requested electric energy, but large amounts of power in short periods would require investments in the reinforcement of the distribution networks, which have not been designed to accommodate such load. It becomes necessary to introduce new systems and solutions to optimize the operation of the distribution networks. In this context we can identify the DSOs as the suppliers of electricity through the distribution networks. The DSOs interact with the eMall, and in particular with the CPMS (Charging Point Management System) module of the system to be. The CPMS, then, gives the information about the DSO's supply to the CPOs, which are important actors, that use the system in order to manage the charging service. A CPO is represented by an employee or a software, part of the business that owns some charging stations and wants to manage them through the eMall, deciding from where to acquire energy, and how to establish the prices, the special offers and other details about the stations.
+
+The eMall is thought as a software that manages both the interaction with the businesses that offer the charging service and the interaction with the EVDs which want to use these services in order to charge their EVs. Therefore, the eMall provides a mobile application (eMma), which through its interface allows to the EVD to obtain the service, and provides, also, a web application that the CPOs use to manage the charging stations. The EVD interacts, as well, with the charging point interface (eMci), that communicates with the CPMS part of the eMall, in order to start the charging session from the station, plugging then the car to the compatible connector to effectively charge the EV.\\
+
+By the official definition of the IEEE Std 1016™-2009 standard, the DD is a representation of a software design that is to be used for recording design information, addressing various design concerns, and communicating that information to the design’s stakeholders. So, in this document we focus on the design of the system to be, describing the components and the interaction among them and with external systems, trough interfaces, in order to achieve the goals and satisfy the requirements explained in the RASD document. 
+
+\section{Scope}
+\label{sec:Scope}%
+The eMall has two main stakeholders: the CPOs and the EVDs. There are different goals to satisfy respectively for the CPOs and the EVDs and different associated requirements to develop. For a detailed description of the domain in which the e-Mall will operate, and to see all the goals and the requirements, the reader should refer to the RASD. While, in this document, we briefly present the main design concerns of the stakeholders, and the main architectural styles. \\
+
+The stakeholders have goals that, in order to be satisfied, need the storage of a large volume of data, therefore scalable technologies are required to manage the amount of information used by the system.
+Also, the stakeholders, especially the EVDs, are not expert users, thus in order to have an user-friendly system is necessary to create a graphical interface with which the users will interact. The system will have a GUI for the eMma and a GUI for the web application used by the CPOs, compatible with any browser, in order to facilitate the access to the system. We want also for the user interfaces to be compliant with different devices, regardless of the screen size.\\
+
+This document will present as main adopted architectural style the 3-layered architecture, that we combine with other architectural choices. For the business logic layer, in fact, we will present a micro-services architecture, while for the presentation layer we will adopt a client-side rendering architecture, in which the client (the web browser and the mobile app) is responsible for rendering the GUI of the application. These architectural choices will be further explained in the following chapter of the DD.
+
+\section{Definitions, Acronyms, Abbreviations}
+\label{sec:Definitions, Acronyms, Abbreviations}%
+\subsection{Abbreviations}
+\begin{itemize}
+    \item \textbf{eMall}: e-Mobility for all
+    \item \textbf{eMma}: e-Mall mobile application
+    \item \textbf{eMci}: e-Mall charger interface
+    \item \textbf{CPMS}: Charging Point Management System
+    \item \textbf{CPO}: Charge Point Operator
+    \item \textbf{eMSP}: Electric Mobility Service Providers
+    \item \textbf{DSO}: Distribution System Operator
+    \item \textbf{OCPI}: Open Charge Point Interface
+    \item \textbf{DBMS}: Database Management System
+    \item \textbf{DBAL}: Database Abstraction Layer
+    \item \textbf{OS}: Operating System
+    \item \textbf{EV}: Electric Vehicle
+    \item \textbf{EVD}: Electric Vehicle Driver
+    \item \textbf{EVSE}: Electric Vehicle Supply Equipment
+    \item \textbf{HV}: High Voltage
+    \item \textbf{LV}: Low Voltage
+    \item \textbf{MV}: Medium Voltage
+    \item \textbf{AC}: Alternating current
+    \item \textbf{DC}: Direct current
+    \item \textbf{RASD}: Requirements Analysis and Specification Document
+    \item \textbf{DD}: Design Document
+    \item \textbf{UI}: User Interface
+    \item \textbf{GUI}: Graphical User Interface
+\end{itemize}
+
+%TODO REVISION: In RASD document is missing the definition and abbreviation of OCPI protocol (also TCP/UDP, OS, GUI)
+\subsection{Definitions}
+\begin{itemize}
+    \item \textbf{DSO}: typically the entity responsible for the operation and management of distribution networks – High, Medium and Low Voltage networks.
+    \item \textbf{CPO}: entity that technically manages all the EV infrastructure assets, depending of existing country regulation – this role can be assured by the DSO or other entity.
+    \item \textbf{eMSP}: is the entity that can explore the economic side of the EV charging infrastructure, namely by selling energy for charging purposes.
+    \item \textbf{CPMS}: is a software system that manages the charge point infrastructure – can manage the technical and economic aspects of the charging infrastructures.
+    \item  \textbf{EVD}: person or entity who owns an EV car and can use the public or private facilities for charging purposes.
+    \item \textbf{EVSE (Electric Vehicle Supply Equipment)}: It is an equipment that is able to charge EV batteries with AC or DC loads and with different rated powers depending on the type of equipment.
+    \item \textbf{Socket outlet}: the port on the electric vehicle supply equipment (EVSE) that supplies charging power to the vehicle
+    \item \textbf{Plug}: the end of the flexible cable that interfaces with the socket outlet on the EVSE
+    \item \textbf{Cable}: a flexible bundle of conductors that connects the EVSE with the electric vehicle
+    \item \textbf{Connector}: the end of the flexible cable that interfaces with the vehicle inlet
+    \item \textbf{Vehicle inlet}: the port on the electric vehicle that receives charging power
+    \item \textbf{Rectifier}: an electrical device that converts alternating current (AC) to direct current (DC)
+    \item \textbf{eMma}: the eMSP subsystem responsible for the EVD interaction from the mobile app
+    \item \textbf{eMci}: the eMSP subsystem responsible for the EVD interaction at the charging point
+    \item \textbf{additional costs}: overtime penalty, deposit for unregistered users
+    \item \textbf{Status of the charger}: can be free, occupied, booked and in maintenance
+    \item \textbf{Smart meter}: is an electronic device that records information such as consumption of electric energy, voltage levels, current, and power factor; allow the reading of energy flow and real-time usage, and consequently permit the identification of interruptions in energy flow
+    \item \textbf{DD}: is an SDD (Software Design Description), which is a representation of a software design to be used for communicating design information to the stakeholders and also to guide the development of the system. The standard refers to this document as SDD, but in the following presentation we will call it DD 
+    \item \textbf{RASD}: is the document that analyzes and presents all the requirements of the system to be, explaining the domain in which the software will operate under some assumptions, and its interactions with the users 
+\end{itemize}
+
+\section{Reference Documents}
+\label{sec:Reference Documents}%
+\begin{itemize}
+    %\item \verb|IEEE 29148-2018 International Standard - Requirements engineering|: defines the construct of a good requirement and provides attributes and characteristics of requirements; provides also additional guidelines for applying the requirements and requirements-related processes
+    \item \verb|IEEE Std 1016™-2009 International Standard for Information Technology| \verb|- Systems| \verb|Design| \verb|- Software Design Descriptions|: describes how to structure a DD, giving a representation of a software design to be used for communicating design information to its stakeholders. The requirements for the design languages (notations and other representational schemas) to be used for conformant design documents are specified
+    \item \verb| ISO/IEC/IEEE 42010 International Standard - System and Software |\\\verb|engineering| \verb|- Architecture description|: this International Standard addresses the creation, analysis and sustainment of architectures of systems through the use of architecture descriptions. This International Standard provides a core ontology for the description of architectures. The provisions of this International Standard serve to enforce desired properties of architecture descriptions and also specifies architecture frameworks and architecture description languages (ADLs), in order to usefully support the development and use of architecture descriptions
+    \item \verb|RDD| assignment document
+    \item \verb|RASD| the document written for the e-Mall, which specifies the goals and the requirements the system to be has to achieve and analyzes the domain of the system 
+    \item \verb|Electric Vehicle CPMS and Secondary Substation Management by F. Campos,| \verb|Efacec, Portugal; L. Marques, Efacec, Portugal and K. Kotsalos,| \verb|Efacec,| \verb|Portugal (15 October 2018)|: used to define the interactions between the different parts of the system and the actors; models the EV public infrastructures, the eMSP, the DSO and the CPMS together with the APIs and protocols that allow their communication
+\end{itemize}
+
+\section{Document Structure}
+\label{sec:Document Structure}%
+This document mainly follows the guidelines of the \verb|IEEE Std 1016™-2009 International| \verb|Standard for Information Technology| \verb|- Systems| \verb|Design| \verb|- Software Design|\\ \verb|Descriptions|, especially the sections 4 and 5 of the document, ordering the parts in a way that fits best the topics of this document.
+The document is composed by the following sections:
+\begin{itemize}
+    \item the first section, to which this part belongs, provides an introduction of the eMall, similar to the RASD document, introducing also the main architectural choices further explained in the following parts of the document
+    \item the second section provides a specific description of the architecture, specifying the design decisions regarding the software to be; the section contains a formal description using UML diagrams to show the components of the eMall, the interfaces, and the interactions of the components among them and with external systems; we start with a high-level view of the system and then we decompose it in smaller parts showing their connections and dependencies; the section contains a component interface diagram, a deployment view and sequence diagrams describing the main interactions explained with the use cases of the RASD
+interactions between components.
+    \item the third section provides mockups of the user interface, explaining the design of the GUI developed for the mobile app and the design of the GUI developed for the web application, describing the interaction of the stakeholders with the interfaces
+    \item the fourth section provides a mapping between the components described in the previous sections and the requirements specified in the RASD, and a component is mapped on the requirement when it contributes to its fulfillment; in order for the document to be self contained we also report the requirements identified in the RASD, and we explain the mapping, thus the reader can understand how the provided architecture reaches the requirements
+    \item the fifth section provides a plan to follow during the implementation of the eMall, specifying from which components to start, which components can be developed in parallel and provides, also, a plan for the integration of the components and the testing, from unit testing, to integration testing and finally the testing of the entire system
+    \item the sixth section reports the effort spent by the components of the group to complete this document
+    \item the last section contains the references used, beyond the ones already specified in this chapter
+\end{itemize}
