@@ -20,6 +20,7 @@ As we stated previously, the system has a three-tier architecture. In particular
 \paragraph{Data tier} The third, and bottom tier, of our system is the data tier, where the persistence concerns of our system are met. The eMall system, both CPMS and eMSP sub-systems, has to handle a large amount of data, which must be carefully stored in order to have a properly working system. The data management is an aspect of software systems that has been thoroughly studied and developed, so the obvious choice for our system is to use an already implemented and tested Database Management System (DBMS).
 
 \section{Component view}
+\label{sec:component_view}
 In this section we will discuss and elaborate on the components that compose our system in order to implement the functionalities listed in the RASD document. We will start from a higher level of abstraction to provide a grasp of how the system works, thus even those who are not familiar with the technical aspect of a software system can understand at high level how the system is structured. Afterwards, we will proceed to further analyze the system at finer levels.
 \begin{figure}[H]
     \centering
@@ -97,8 +98,6 @@ The CPMS is the subsystem responsible for manging the charging station, offering
 
     \item \textbf{CPORequestHandler}: It is the component where all the CPO request must first pass trough in order to perform security checks and allow only authorized user to access the services of the CPMS. To offer this functionality the component makes use of the AuthenticationService component to login the user and to check if the request coming from the webapp have the necessary authorization. If a request passes the controls it's forwarded to the respective component
 
-    \item \textbf{ChargingSessionService}: Component responsible for handling the starting, monitoring and terminating of a charging process
-
     \item \textbf{ChargingStationInformationService}: Component in charge of processing the data of the charging station, stored in the DB, in a suitable format for the eMSP and compatible with the OCPI interface
 
     \item \textbf{ReservationService}: Component responsible of managing the reservation of the charging points 
@@ -140,8 +139,155 @@ Finally at the lowest level we have the persistent part of the system, which int
 For a more secure system we consider not only a DB, but also some replicas, distributed on different machines to guarantee more availability, fault tolerance and disaster recovery. 
 
 \section{Runtime view}
+In this section a dynamic view of the system is provided, displaying the interactions between the components identified in section \ref{sec:component_view} by mean of sequence diagrams in UML notation.\\
+For the sake of conciseness repetition of interactions that exhibit the same, or similar, behaviour has been avoided, hence, only the most important interactions emerging from the use case presented in the RASD document are shown here. Furthermore, we mainly present the main interaction of the use cases, disregarding the exceptions, which are shown only in some situations to underline important differences in the flow of events.
 
+\pagebreak
+\subsection{EVD runtime view}
+\textbf{EVDregistration}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[trim={1cm 1cm 5.9cm 1cm},clip, width=1\textwidth]{Images/cp2/runtime/EVDRegistration.pdf}
+    \caption{EVD registration sequence diagram}
+\end{figure}
+This diagrams shows the interactions taking place between the eMma component, responsible for the interaction with the user, and the EVDRegistrationService, tasked with handling the registration process. As shown in the component diagram (section \ref{sec:component_view}) all the interaction between eMma and the component of the eMSP server must pass through the EVDRequestHandler so it can check whether the operations needs special authorization or not. In this specific case the operations needs no special authorization so the EVDRequestHandler will only dispatch the request to the right component. The first "found message" represent the user interaction on eMma to start a registration process. eMma, try first to do a simple check on the validity of the email, by checking if it has the right format. If the controls are successful, eMma starts the interaction with the eMSP server by sending the request with the data to the eMSP server. This request starts the registration process in the EVDRegsitrationService (ERS from now on). In this first step the ERS will acknoweledge the requese and temproray store the data. The next step is for eMma to check for the password when the user inserts it, and then sends the data to the ERS. Next, eMma request the user to share his geolocation and to agree to the terms of service. If the user agrees eMma send a message to the ERS to notify him that the data necessary to the registration were gathered. Now the ERS starts a process of verifying the user by sending him an email with a link to verify his data. After he email is sent, the ERS sends the verifyAccount message to eMma and then save the EVD data into the DB so they can be retrieved later when the user verifies his identity. When the user does so, the ERS proceeds to save the user by asking the AuthenticationService to validate the user. Finally the ERS sends an email to the user notifying him the registration was successfully completed.
+
+\paragraph{Login}\mbox{}\
+\begin{figure}[H]
+    \centering
+    \includegraphics[trim={0 20cm 0 0},clip, width=1\textwidth]{Images/cp2/runtime/Login.pdf}
+    \caption{EVD Login sequence diagram}
+\end{figure}
+This set of interactions is as simple as shown in the diagram. The user starts the interaction by requesting to login in the system and providing the username and password. eMma forwards this request to the eMsp server through the ERH which passes it to the AuthenticationService. If the the username exists and the password is correct then the AuthenticationService returns a token that will be used to access the system services, if not it returns an error message.
+
+\paragraph{Authorized request}\mbox{}
+\begin{figure}[H]
+    \centering
+    \includegraphics[trim={0 7cm 0 0},clip, width=1\textwidth]{Images/cp2/runtime/AuthorizedRequest.pdf}
+    \caption{Authorized request sequence diagram}
+    \label{fig:auth_request}
+\end{figure}
+This sequence of interactions has non mapping to any particular use case but it's an important flow of events that show how an authorized request is controlled to have the right access permissions. This sequence interactions will always occur for any authorized request arriving to the system, both eMSP and CPMS, and for the sake of conciseness it will be considered implicit in the following diagrams. The diagram is left generic precisely because how general this sequence of actions is. As always the interactions start with an outside message that triggers eMma to invoke a service of the eMsp. Along with the arguments needed to request the service, for authorized operations, eMma needs also to yield the token obtained during the login phase. Secondly, the ERH aks the AuthenticationService to check if the token is valid: if it is, then it proceeds to call the methods of the required service with the arguments it received from eMma. If the token is invalid, ERH send an \textit{unauthorizedAccess} message to eMma.
+\pagebreak
+
+\paragraph{Booking}\mbox{}\\
+For this interaction we have decided to slpit the diagrams in two, showing first the interactions that occur in the eMSP subsystem, and afterwards showing the sequence of actions that happen in the CPMS.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[trim={0 4cm 0 0},clip, width=1\textwidth]{Images/cp2/runtime/Booking_emsp_view.pdf}
+    \caption{Charging point booking sequence diagram}
+\end{figure}
+The interaction starts when the user inserts the start time and end time of the booking (notice that this are timestamps, so the date is already encoded). Next, eMma retrieves the data of the charging point the user has selected in the view and send the request to the eMSP. The request, after validating the token, is forwarded to the BookingService. The latter component must interact with the CPMS to make the reservation. The interactions between the BookingService and the CPMS roughly follow the standard stated in the OCPI protocol. When the reservation is confermed by the CPMS, the BookingService sees to send the confirmation message back to eMma.
+
+\begin{figure}
+    \centering
+    \includegraphics[trim={0 10cm 0 0},clip, width=1\textwidth]{Images/cp2/runtime/Booking_cpms_view.pdf}
+    \caption{Charging point reservation sequence diagram}
+\end{figure}
+From the perspective of the CPMS we show the sequence of action considering the session is already started, hence the interactions start from the PUT method from the eMSP making a request for a reservation. The eMSPRequestHandler validates the request analyzing the token embedded in session object (like we have shown in diagram \ref{fig:auth_request}) and then dispatches the request to the ReservationService component, which unpacks the reservation object to extract the data he needs and makes an availability control on the charging point and the time span requested. If the controls are poitive then the ReservationService proceeds to send a confirmation message back to the eMSP and saving the reservation in the DB to update the information about the station.
+
+\paragraph{VisualizeStations}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[trim={0 3cm 0 1cm},clip, width=1\textwidth]{Images/cp2/runtime/VisualizeStations.pdf}
+    \caption{Visualize stations sequence diagram}
+\end{figure}
+The process of visualizing the stations starts when the user opens the app and is greeted with a map. Next, eMma gets the location information from the user smartphone as shown with the self call \textit{getLocation}. Before asking the stations' data to the eMSP server, eMma tries to first check if the data it has cached is still valid and if it is, then it generates the map based on this data. If the cache is invalid, eMma requests to the eMSP server the data about the stations. Please note that the request doesn't need authorization so the token is not passed as an argument. The request is then dispatched to the ChargingStationsDataManager, which trough a series of methods call to the DB retrieves the necessary data and returns it back  to eMma.
+
+\paragraph{ChargeNow}\mbox{}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[trim={0 6.5cm 0 1cm},clip, width=1\textwidth]{Images/cp2/runtime/ChargeNow_emsp_view.pdf}
+    \caption{Start Charging session sequence diagram}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[trim={0 6cm 0 1cm},clip, width=1\textwidth]{Images/cp2/runtime/ChargeNow_cpms_view.pdf}
+    \caption{Unlock charging point sequence diagram}
+\end{figure}
+
+\clearpage
+\subsection{CPO runtime view}
+\textbf{VisualizeGraphicalInformation}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[trim={0 0cm 0 0.15cm},clip,width=1\textwidth]{Images/cp2/runtime/VisualizeGraphicalInformation.png}
+    \caption{Visualize graphical information sequence diagram}
+\end{figure}
+The interaction starts when the CPO enters into the section available to analyse the stations. The web application returns a page with a list of parameters that the user can select in order to get a graphical view of the stations progress based on these criteria. Once selected the parameters the user confirms the operation, so he requests the graphical view based on his choices. The request is passed to the AnalyticsService component, which gets the needed data, depending on the desired analyses, and creates the graphical view using the acquired information. Then the graphical view is sent back to the web application, through the CPORequestHandler, and shown to the user.   
+
+\clearpage
+\textbf{StoreEnergyInBattery}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Images/cp2/runtime/StoreEnergyInBattery.png}
+    \caption{Charge battery sequence diagram}
+\end{figure}
+Once the CPO decides to store energy in the battery of a certain station that is equipped with it, the CPORequestHandler sends the request to the ChargingStationManager, which is the component that manages the changes of the stations, but it needs to interact with the BatteryManagementService, which checks the battery to see if it is full or can actually be charged and also checks if the battery is functional. If the battery can be charged an asynchronous message is sent to the CentralManagementService, that manages the technical aspects of the charging. The manager of the battery, then, controls if the battery is charging, and if the charging was correctly initiated the request is fulfilled. Finally, in loop, the web application interrogates the BatteryManagementService to know the level of the battery, keeping in this way track of the charging process and showing it to the user.  
+
+\clearpage
+\textbf{AddPromotion}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Images/cp2/runtime/AddPromotion.png}
+    \caption{Add promotion to charging station sequence diagram}
+\end{figure}
+To add a promotion to a charging station the CPO first selects the specific station, and then sets the promotion. The promotion is sent to the ChargingStationManager which checks the promotion, if it is compliant with the stations. If the promotion is acceptable the price is updated accordingly and the promotion and the price are saved on the DB. If the update is successful the page is reloaded. In this sequence diagram we see the main use case and the alternative one that treats the case of inserting an incorrect promotion, because we wanted to show how in case of error a lot of operations are not needed anymore.
+
+\clearpage
+\textbf{UpdateDSO}\\
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Images/cp2/runtime/UpdateDSO.png}
+    \caption{Update charging station DSO sequence diagram}
+\end{figure}
+Once selected a DSO and the relative data from the form, the station DSO is updated. The ChargingStationManager sends to the DSOManagementService the station and the selected data of the DSO in order to check the data and send the request to the DSO itself. Once received a confirmation the DSOManagementService completes the update of the DSO and responds to the ChargingStationManager, which acknowledges the success. In parallel this component starts two operations, one that updates the data on the DB passing through the DBAL and DBMS, and another that updates the DSO data on the CentralManagementService. Once everything is updated the user receives a successful message and reloads the page. 
+
+\clearpage
 \section{Component interfaces}
+\paragraph{DBAL}\mbox{}\\
+\begin{itemize}
+    \item saveData(o: Object): Boolean
+    \item getData(o: Object): Object
+    \item getData(q: String): DataFrame
+\end{itemize}
+
+\paragraph{AuthenticationService}\mbox{}\\
+\begin{itemize}
+    \item signup(username: String, password: String): Boolean
+    \item authenticate(username: String, password: String): Boolean
+    \item checkValidity(token: String): Boolean
+\end{itemize}
+
+\paragraph{NotificationService}\mbox{}\\
+\begin{itemize}
+    \item notify(receiver: Receiver, message:  Message): void
+    \item sendEmail(email: String, content: String): void
+\end{itemize}
+
+\paragraph{EVDRegistrationService}\mbox{}\\
+\begin{itemize}
+    \item register(name: String, surname: String, username: String, email: String)
+    \item setPassword(password: String)
+    \item registrationReady()
+    \item verifyUser()
+    \item sendLink(email: String)
+    \item saveUnverifiedUser(u: User)
+    \item saveUser(u: User)
+    \item sendRegistrationSuccess(email: String, content: String)
+\end{itemize}
+
+\paragraph{PaymentService}\mbox{}\\
+\begin{itemize}
+    \item makePayment(p: PaymentProcessor, c: Credentials, amount: Number)
+\end{itemize}
+
+\paragraph{ChargingHistoryService}\mbox{}\\
+\begin{itemize}
+    \item getChargingHisotry
+\end{itemize}
 
 \section{Selected architectural styles and patterns}
 
