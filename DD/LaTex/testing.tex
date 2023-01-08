@@ -1,0 +1,71 @@
+For the implementation of the system we opt for an iterative approach. Accordingly, the system will be released to the customer not in its entirety with all the functionalities, but the first releases will consist only of some parts of the system that can be used only by some category of the users and will have only a subset of functionalities. Given that the system is composed by two main subsystems, which must be interoperable with other subsystems of the same kind, we decided that it would be best to build one of the subsystems first and then deliver this subsystem so part of the stakeholders can start to work with the system without having to wait for all the eMall to be completed. Of course if the development team is sufficiently large, the two subsystems can be build in parallel. We decided that the sub-system that should be built first is the CPMS.
+
+\section{Implementation, integration and test plan for the CPMS part of the eMall}
+\paragraph{First release}
+The first release of this subsystem consist on delivering a system with the bare essential to allow different eMSP to start a charging session for their clients and for the CPO to set the price for his services. To build this part of the system we have chosen a bottom up approach, and consequently the testing will be done in this fashion. Firstly, the effort of the whole development team shall be focused on building the DBAL to build it as fast as possible, since it will provide access to the DBMS, which is a fundamental component of the system. Naturally, this component will be thoroughly tested, so a driver to test this component shall be built.\\
+In the next iteration, the following components shall be implemented and unit-tested separately:
+\begin{itemize}
+    \item CentralManagementService
+    \item DSOManagementService
+    \item ChargingStationInformationService
+\end{itemize}
+After unit testing each of this components, the team responsible for the ChargingStationInformationService shall integrated it with the DBAL, to test if the system is well integrated. Meanwhile for the components CentralManagementService and DSOManagementService we can't do a real integration testing because these components use externals APIs, hence the integration testing for this part will consist in verifying if the interfaces provided by the external components respond as intended.\\
+\\
+In the next iteration the following components shall be implemented and tested:
+\begin{itemize}
+    \item StationsVisualizer
+    \item ChargingStationManager
+    \item eMSPRequestHandler
+\end{itemize}
+We'd like to point out that in this iteration for ChargingStationManger the part which communicates with the BatteryManagementSystem will be excluded from the implementation and testing, since it will be left to be developed in a further release. This is also true for the eMSPRequestHandler, which will exclude the part of the component that interacts with the ReservationService, since it will be implemented in the future. After the unit testing are conducted, we shall proceed to test the integration of the eMSPRequestHandler with the ChargingStationInformationService and the integration of the ChargingStationManager component with the DSOManagementService and CentralManagementService components. StationsVisualizer will be not integrated in this iteration since it is a bottom module.\\
+\\
+The next iteration, and the last before the release, will require the implementation of:
+\begin{itemize}
+    \item a minimal webapp to allow the user to interact with the system
+    \item CPORequestHandler
+    \item NotificationService
+\end{itemize}
+As we did before the CPORequestHandler will be implemented only to use the functionalities of the components, or part of them, built in the previous iterations. Meanwhile, for the webapp the focus will be on building only the bare essentials to grant the CPO to interact with the CPMS. After the components pass the unit testing then we will proceed to integrate this two last components. After that we will proceed to integrate test the webapp, DSORequestHandler with the AuthenticationService, which is component that we will develop ourselves but we will use an already built external framework. With this last step we have built a functioning system ready to be released, but with only a subset of all functionalities. The system will be whole only with the second release.
+
+\paragraph{Second release}
+The second release aims to integrate the system with the micro-services responsible for providing the remaining functionalities demanded of the CPMS, namely allowing an eMSP to reserve charging sessions for its clients, provide the CPO with a data visualization tools, and creating a component to manage the battery of the charging station if present. All this can be achieved in one iteration and specifically the following components need to be built:
+
+\begin{itemize}
+    \item BatteryManagementService
+    \item extend ChargingStationManager to be able to interact with BatteryManagementService
+    \item AnalyticsService
+    \item extend DSORequestHandler to be able to handle the request relative to the AnalyticsService and BatteryManagementService
+    \item conclude webapp iterface
+    \item ReservationService
+    \item extend eMSPRequestHandler in order to be able to call ReservationService
+\end{itemize}
+This task can be achieved by three teams working in parallel; the first team should focus on implementing the BatteryManagementService and AnalyticsService components, while extendended ChargingStationManager and DSORequestHandler to support the newly added components. The second team shall terminate the interface of the webapp and lastly, the third team, will be responsible of implementing the ReservationService and extended the eMSPRequestHandler. As we already did before, each component shall be first unit tested, and only after passing these test the team shall move to test the integration of the newly added component with the ones extended to interact with them. Lastly the team shall perform test the whole system to validate the new additions and modification to the system.\\
+\\
+After this new addition the CPMS subsystem has all the functionalities demanded of him, and can fully interact with the eMSPs of different vendors.
+
+\section{Implementation, integration and test plan for the eMSP part of the eMall}
+\paragraph{First release}
+We proceed once more with a bottom-up approach and implementing in parallel more than one service. For the eMSP part of the system we first implement the micro-services that provide the functionality of charging the EV and since this operation can be made by both a registered and unregistered EVD we do not have to concern ourselves with the registration module. So, initially, for the charging operation to be functional we implement:
+\begin{itemize}
+    \item ChargingSessionService
+    \item ChargingStationDataManager
+    \item PaymentService
+\end{itemize}
+After unit testing we test each of this component individually using some drivers, and before integrating them for further testing, we first implement the EVDRequestHandler, the controller that manages the requests of this service. The team can be divided in such way that in parallel all these micro-services are implemented, and then subjected to unit testing. Afterwards, they are integrated and tested using a driver that interacts with the EVDRequestHandler, which passes the data to the other three components, testing the functionality as a whole, so also their interaction to reach the requirement; and moreover we can notice that in this integration we need the DBAL, implemented before, to interact with the DB trough the DBMS and acquire the necessary data.\\\\
+As second step, we implement:
+\begin{itemize}
+    \item EVDRegistrationService
+    \item a minimal part of the eMma necessary for the charging and the registration
+    \item eMci
+\end{itemize}
+Following the same approach as before, we first test these new implementations on their own, and then we perform an integration to test the complex behaviour of the components and their interactions. We integrate the new elements with the one tested in the prevoius step and with the shared components of the eMall, which were already implemented and tested when developing the CPMS part of the system: NotificationService and AuthenticationService. If all the tests are passed the system can be deployed, having a first minimal release of the eMma, the eMci and the eMSP application server, allowing to the EVD to charge the EV, after registering and logging in the eMma or simply using the system as a guest. 
+
+\paragraph{Second release}
+The second release aims to provide the remaining main features of the eMma and of the eMSP, in order to allow the EVD to book a charging point and to manage its profile data, adding new information or deleting and updating the ones used during registration. To achieve these requirements is necessary to implement the following micro-services: 
+\begin{itemize}
+    \item BookingService
+    \item EVDProfileManager
+    \item complete the eMma implementation
+\end{itemize}
+These components are implemented in parallel, tested singularly with unit tests and then tested using a driver that simulates the above invocations. The components are also integrated and tested in order to verify that their interaction works properly. After a certain set of test, before releasing the new functionalities, is also performed a system test, integrating these new micro-services with the first release and checking the main sequences of events that the EVD could initiate. Once completed the system testing the eMma is ready to be released with all its main functionalities.\\\\
+In the previous parts of this document we also talked about another component, the ChargingHistoryService, but this micro-service achieves some requirements that are not essential for the offered services. So based on the time and the resources this component can be developed in a later moment, having another release of the system. The eMall has to be maintained and if possible not only pure testing should be conducted, but also some validation, receiving feedback from the stakeholders in order to update the system to meet their needs as much as possible, satisfying also new requirements and improving the non-functional requirements.

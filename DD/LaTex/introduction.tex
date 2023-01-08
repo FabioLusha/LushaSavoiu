@@ -8,7 +8,7 @@ In this context there is an increase in the requested electric energy, but large
 
 The eMall is thought as a software that manages both the interaction with the businesses that offer the charging service and the interaction with the EVDs which want to use these services in order to charge their EVs. Therefore, the eMall provides a mobile application (eMma), which through its interface allows to the EVD to obtain the service, and provides, also, a web application that the CPOs use to manage the charging stations. The EVD interacts, as well, with the charging point interface (eMci), that communicates with the CPMS part of the eMall, in order to start the charging session from the station, plugging then the car to the compatible connector to effectively charge the EV.\\
 
-By the official definition of the IEEE Std 1016™-2009 standard, the DD is a representation of a software design that is to be used for recording design information, addressing various design concerns, and communicating that information to the design’s stakeholders. So, in this document we focus on the design of the system to be, describing the components and the interaction among them and with external systems, trough interfaces, in order to achieve the goals and satisfy the requirements explained in the RASD document. 
+By the official definition of the IEEE Std 1016™-2009 standard, the DD is a representation of a software design that is to be used for recording design information, addressing various design concerns, and communicating that information to the design’s stakeholders. So, in this document we focus on the design of the system to be, describing the components and the interaction among them and with external systems, through interfaces, in order to achieve the goals and satisfy the requirements explained in the RASD document. 
 
 \section{Scope}
 \label{sec:Scope}%
@@ -36,38 +36,28 @@ This document will present as main adopted architectural style the 3-layered arc
     \item \textbf{OS}: Operating System
     \item \textbf{EV}: Electric Vehicle
     \item \textbf{EVD}: Electric Vehicle Driver
-    \item \textbf{EVSE}: Electric Vehicle Supply Equipment
-    \item \textbf{HV}: High Voltage
-    \item \textbf{LV}: Low Voltage
-    \item \textbf{MV}: Medium Voltage
-    \item \textbf{AC}: Alternating current
-    \item \textbf{DC}: Direct current
     \item \textbf{RASD}: Requirements Analysis and Specification Document
     \item \textbf{DD}: Design Document
     \item \textbf{UI}: User Interface
     \item \textbf{GUI}: Graphical User Interface
+    \item \textbf{DB}: Database
+    \item \textbf{DBMS}: Database Management System
+    \item \textbf{DBAL}: Database Abstraction Layer
 \end{itemize}
 
-%TODO REVISION: In RASD document is missing the definition and abbreviation of OCPI protocol (also TCP/UDP, OS, GUI)
 \subsection{Definitions}
 \begin{itemize}
-    \item \textbf{DSO}: typically the entity responsible for the operation and management of distribution networks – High, Medium and Low Voltage networks.
-    \item \textbf{CPO}: entity that technically manages all the EV infrastructure assets, depending of existing country regulation – this role can be assured by the DSO or other entity.
-    \item \textbf{eMSP}: is the entity that can explore the economic side of the EV charging infrastructure, namely by selling energy for charging purposes.
-    \item \textbf{CPMS}: is a software system that manages the charge point infrastructure – can manage the technical and economic aspects of the charging infrastructures.
-    \item  \textbf{EVD}: person or entity who owns an EV car and can use the public or private facilities for charging purposes.
-    \item \textbf{EVSE (Electric Vehicle Supply Equipment)}: It is an equipment that is able to charge EV batteries with AC or DC loads and with different rated powers depending on the type of equipment.
-    \item \textbf{Socket outlet}: the port on the electric vehicle supply equipment (EVSE) that supplies charging power to the vehicle
-    \item \textbf{Plug}: the end of the flexible cable that interfaces with the socket outlet on the EVSE
-    \item \textbf{Cable}: a flexible bundle of conductors that connects the EVSE with the electric vehicle
-    \item \textbf{Connector}: the end of the flexible cable that interfaces with the vehicle inlet
+    \item \textbf{DSO}: typically the entity responsible for the operation and management of distribution networks – High, Medium and Low Voltage networks
+    \item \textbf{CPO}: entity that technically manages all the EV infrastructure assets, depending of existing country regulation – this role can be assured by the DSO or other entity
+    \item \textbf{eMSP}: is the entity that can explore the economic side of the EV charging infrastructure, namely by selling energy for charging purposes
+    \item \textbf{CPMS}: is a software system that manages the charge point infrastructure – can manage the technical and economic aspects of the charging infrastructures
+    \item  \textbf{EVD}: person or entity who owns an EV car and can use the public or private facilities for charging purposes
     \item \textbf{Vehicle inlet}: the port on the electric vehicle that receives charging power
     \item \textbf{Rectifier}: an electrical device that converts alternating current (AC) to direct current (DC)
     \item \textbf{eMma}: the eMSP subsystem responsible for the EVD interaction from the mobile app
     \item \textbf{eMci}: the eMSP subsystem responsible for the EVD interaction at the charging point
-    \item \textbf{additional costs}: overtime penalty, deposit for unregistered users
+    \item \textbf{Additional costs}: overtime penalty, deposit for unregistered users
     \item \textbf{Status of the charger}: can be free, occupied, booked and in maintenance
-    \item \textbf{Smart meter}: is an electronic device that records information such as consumption of electric energy, voltage levels, current, and power factor; allow the reading of energy flow and real-time usage, and consequently permit the identification of interruptions in energy flow
     \item \textbf{DD}: is an SDD (Software Design Description), which is a representation of a software design to be used for communicating design information to the stakeholders and also to guide the development of the system. The standard refers to this document as SDD, but in the following presentation we will call it DD 
     \item \textbf{RASD}: is the document that analyzes and presents all the requirements of the system to be, explaining the domain in which the software will operate under some assumptions, and its interactions with the users 
 \end{itemize}
@@ -77,8 +67,8 @@ This document will present as main adopted architectural style the 3-layered arc
 \begin{itemize}
     \item \verb|IEEE Std 1016™-2009 International Standard for Information Technology| \verb|- Systems| \verb|Design| \verb|- Software Design Descriptions|: describes how to structure a DD, giving a representation of a software design to be used for communicating design information to its stakeholders. The requirements for the design languages (notations and other representational schemas) to be used for conformant design documents are specified
     \item \verb| ISO/IEC/IEEE 42010 International Standard - System and Software |\\\verb|engineering| \verb|- Architecture description|: this International Standard addresses the creation, analysis and sustainment of architectures of systems through the use of architecture descriptions. This International Standard provides a core ontology for the description of architectures. The provisions of this International Standard serve to enforce desired properties of architecture descriptions and also specifies architecture frameworks and architecture description languages (ADLs), in order to usefully support the development and use of architecture descriptions
-    \item \verb|RDD| assignment document
-    \item \verb|RASD| the document written for the e-Mall, which specifies the goals and the requirements the system to be has to achieve and analyzes the domain of the system 
+    \item \verb|RDD|: assignment document
+    \item \verb|RASD|: the document written for the e-Mall, which specifies the goals and the requirements the system to be has to achieve and analyzes the domain of the system 
     \item \verb|Electric Vehicle CPMS and Secondary Substation Management by F. Campos,| \verb|Efacec, Portugal; L. Marques, Efacec, Portugal and K. Kotsalos,| \verb|Efacec,| \verb|Portugal (15 October 2018)|: used to define the interactions between the different parts of the system and the actors; models the EV public infrastructures, the eMSP, the DSO and the CPMS together with the APIs and protocols that allow their communication
 \end{itemize}
 
