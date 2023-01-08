@@ -54,12 +54,12 @@ In this section we present the most important use cases of the eMall. To each us
     \label{tab:RegisterEVD}
     \end{longtable}
 \end{center}
-
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth, trim={0 6cm 0 0}, clip]{Images/cp3/seqDiagrams/RegisterEVD.pdf}
+    \includegraphics[width=1\textwidth, trim={1cm 5cm 0 1.2cm}, clip]{Images/cp3/seqDiagrams/RegisterEVD.pdf}
     \caption{RegisterEVD sequence diagram}
 \end{figure}
+\pagebreak
 
 \paragraph{Log in the system}
 \begin{center}
@@ -83,9 +83,9 @@ In this section we present the most important use cases of the eMall. To each us
      \hline
      Exit condition & The user is logged in and is shown the homepage of the eMma \\
      \hline
-     Exceptions &  If the credentials are not correct the user receives an error message and the log in is not successful \\
+     Exceptions &  If the credentials are not correct the user receives an error message and the login operation is not successful \\
      \hline
-     Special requirements &  After inserting the credentials, the log in details must be checked and the eMall homepage must be shown in less than 2 seconds \\
+     Special requirements &  After inserting the credentials, the login details must be checked and the eMall homepage must be shown in less than 2 seconds \\
      \hline
     \caption{LogIn}
     \label{tab:LogIn}
@@ -114,7 +114,7 @@ In this section we present the most important use cases of the eMall. To each us
      \hline
      Event flow &
         1. The EVD performs <<include>>VisualizeStations \newline
-        2. The EVD selects to book charge from a charging station \newline
+        2. The EVD selects to book a charging session from a charging station \newline
         3. eMma shows a list of available charging points with the following information:
             \begin{adjustwidth}{0.5cm}{}
                 \begin{itemize}
@@ -126,13 +126,13 @@ In this section we present the most important use cases of the eMall. To each us
                 \end{itemize}
             \end{adjustwidth}
         4. EVD selects the charging point that suits his needs \newline
-        5. The EVD set the date, the starting and ending time of the charging session
+        5. The EVD set the date, the starting and ending time of the charging session \newline
         6. eMma shows to the EVD a summary of the booking and asks the EVD for confirmation \newline
         7. EVD confirms the booking \newline
         8. The system processes the booking request \newline
         9. eMma notifies the EVD about the success of the booking operation\\
      \hline
-     Exit condition &  Booking is registered and the charging point socket changes status to reserved\\
+     Exit condition &  Booking is registered\\
      \hline
      Exceptions &
         If the booking confirmation fails, eMma shall notify the user about the occurrence of an error and should bring the view back to the list of available charging points\\
@@ -174,7 +174,7 @@ In this section we present the most important use cases of the eMall. To each us
         7. EVD confirms \newline
         8. eMma notifies the EVD about the canceling and sends information to the eMSP about the canceling\\
      \hline
-     Exit condition &  The booking is cancelled and the previously reserved charging point socket changes status to free in the booked time-frame\\
+     Exit condition &  The booking is cancelled\\
      \hline
      Exceptions &
         If the booking confirmation fails, eMma shall notify the user about the occurrence of an error and should bring the view back to the list of available charging points
@@ -190,7 +190,7 @@ In this section we present the most important use cases of the eMall. To each us
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width= 0.8\textwidth, trim={1.5cm 3.5cm 3cm 1cm}, clip]{Images/cp3/seqDiagrams/CancelBooking.pdf}
+    \includegraphics[width= 1\textwidth, trim={1.5cm 3.5cm 3cm 1cm}, clip]{Images/cp3/seqDiagrams/CancelBooking.pdf}
     \caption{CancelBooking sequence diagram}
 \end{figure}
 
@@ -438,7 +438,7 @@ We show only a sequence diagram for all the use cases regarding the modification
                                 \item contact details
                                 \item address of the charging station
                                 \item any directions on how to handle the charging process
-                                \item rating and reviews
+                                \item Reviews about the charging station
                                 \item the presence of any special offer
                         \end{itemize}
                     \end{adjustwidth}   
@@ -517,7 +517,7 @@ We show only a sequence diagram for all the use cases regarding the modification
     \includegraphics[width= 0.9\textwidth, trim={1cm 2cm 2cm 1cm}, clip]{Images/cp3/UseCaseDiagramCPO.png}
     \caption{Use cases diagram of the CPO}
 \end{figure}
-We can notice that the CPO actor activities are concentrated on the managing of the charging stations. All the operations specify the general one 'ManageStations', and there can be many others beyond the ones that are presented here, because the CPO can update and add a lot of data, which are then sent to the CPMS. We decided to concentrate our analyses on the main feature that regard the system, such as updates regarding the DSO from which to acquire energy, updates of the prices and the special offers and other essential operations regarding the stations and the related charging points and batteries.
+We can notice that the CPO actor activities are concentrated on the managing of the charging stations. All the operations specify the general one 'ManageStations', and there can be many others beyond the ones that are presented here, because the CPO can update and add a lot of data, which are then sent to the CPMS. We decided to concentrate our analyses on the main features that regard the system, such as updates regarding the DSO from which to acquire energy, updates of the prices and the special offers, and other essential operations regarding the stations and the related charging points and batteries.
 
 \clearpage
 \paragraph{Manage the charging stations}
@@ -565,8 +565,9 @@ We can notice that the CPO actor activities are concentrated on the managing of 
 
 The use case about the CPO managing the charging stations, is a generic use case, that can be further analyzed considering the actions that the CPO actually performs on the system, to manage the stations. In the following use cases, we specialize some of these interactions, as already mentioned at the beginning of this section, showing available functionalities of the web application of the eMall. 
 %TODO: @Fabio sequence diagrams of the other CPO use cases or leave this line
-%The sequence diagrams of the next use cases are similar to the one reported for the general interaction of the CPO with the system, so they will not be added to this document.
+The sequence diagrams of the next use cases exhibit a similar event-flow as the one reported for the general interaction of the CPO with the system, so they will not be added to this document.
 
+\clearpage
 \paragraph{Update the DSO of a charging station}
 \begin{center}
     \begin{longtable}{p{4cm} p{11cm}}
@@ -679,11 +680,11 @@ The use case about the CPO managing the charging stations, is a generic use case
     \label{tab:AddPromotion}
     \end{longtable}
 \end{center}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth, trim={0 3cm 6cm 0}, clip]{Images/cp3/seqDiagrams/AddPromotion.pdf}
-    \caption{AddPromotion sequence diagram}
-\end{figure}
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[width=0.8\textwidth, trim={0 3cm 6cm 0}, clip]{Images/cp3/seqDiagrams/AddPromotion.pdf}
+%    \caption{AddPromotion sequence diagram}
+%\end{figure}
 
 \paragraph{Delete a charging station}
 \begin{center}
@@ -701,7 +702,7 @@ The use case about the CPO managing the charging stations, is a generic use case
      \hline
      Event flow &   1. On the homepage the eMall shows to the CPO the charging stations associated to the company                   registration and any notification on the stations \newline
                     2. The CPO clicks on a charging station \newline 
-                    3. The system shows a form with the details of the charging station \newline
+                    3. The system shows a form with the details of the station \newline
                     4. The CPO clicks the 'Delete charging station' button \newline
                     5. The system sends a warning message and asks for confirmation, because this is a delicate operation \newline
                     6. The CPO confirms the operation \newline
@@ -862,7 +863,6 @@ The use case about the CPO managing the charging stations, is a generic use case
     \end{longtable}
 \end{center}
 
-%Use case UseEnergyFromBattery
 \paragraph{Decide to use the battery}
 \begin{center}
     \begin{longtable}{p{4cm} p{11cm}}
@@ -881,26 +881,25 @@ The use case about the CPO managing the charging stations, is a generic use case
         1. CPO selects to change the energy source used by the charging points \newline
         2. CPMS shows to the CPO the list of available energy sources \newline
         3. CPO selects the battery as energy source \newline
-        4. The system accept the instruction and processes the request \newline
+        4. The system accepts the instruction and processes the request, checking that the battery is not empty \newline
         5. The system notifies the successful operation
      \\
      \hline
-     Exit condition &  The system switches to the battery as energy source for the charging points\\
+     Exit condition &  The system switches to the battery as energy source for the charging points of the station\\
      \hline
      Exceptions & 
-        a. If the battery is empty the system won't allow the user to selects it as energy source \newline
-        b. If the system can't switch to the battery energy source then an error is returned to the user\\
+        a. If the battery is empty the system won't allow the user to select it as energy source \newline
+        b. If the system can't switch to the battery energy source an error message is sent to the user\\
      \hline
      Special requirements &
-        While changing the energy source to battery the system must show to the user the status of the processing in real-time\\
+        While changing the energy source to battery the system must show to the user the status of the processing in real-time \\
      \hline
     \caption{UseEnergyFromBattery}
     \label{tab:UseEnergyFromBattery}
     \end{longtable}
 \end{center}
-\clearpage
 
-%Use case StoreEnergyInBattery
+\clearpage
 \paragraph{Decide to store energy in the battery}
 \begin{center}
     \begin{longtable}{p{4cm} p{11cm}}
@@ -915,14 +914,21 @@ The use case about the CPO managing the charging stations, is a generic use case
      \hline
      Entry condition & The charging station is equipped with a battery  \\
      \hline
-     Event flow &   1.
+     Event flow & 
+        1. CPO selects the battery management section \newline
+        2. CPMS shows the status of the battery (remaining charge, in use, functioning) \newline
+        3. CPO selects to recharge the battery \newline
+        4. CPMS process the request and connects the battery to the station grid \newline
+        5. CPMS show information about the charging process
      \\
      \hline
-     Exit condition &  \\
+     Exit condition & The battery is charging \\
      \hline
-     Exceptions &   a.\\
+     Exceptions & 
+        a. If the battery is already full or malfunctioning then the CPMS will notify the CPO with an error message explaining the reason of the error\\
      \hline
-     Special requirements & \\
+     Special requirements &
+        Te system shall process the request in less than 2 seconds\\
      \hline
     \caption{StoreEnergyInBattery}
     \label{tab:StoreEnergyInBattery}

@@ -35,10 +35,10 @@ Next we have to keep track also of the data that we get from the DSOs. The elect
 Considering that the operation of charging an EV is not an operation that happens that often, we assume that at a certain point of time only 2-5\% of the user are actively using the eMSP at the same moment. Since the speed of processing a request is not vital to the functionality of the system, we do not impose any hard constraint on the time a request should be processed, only that it shall be done on the order of 5-20 seconds to give the user the impression of good usage experience.
 \medskip
 \par
-Regarding eMma, we'd like to point out that it's the component that will influence the most the perceived usage experience, so for all the operations that do not involve request to the eMSP server eMma shall process the request in less than 2 seconds.
+Regarding eMma, we'd like to point out that it's the component that will influence the most the perceived usage experience so, for all the operations that do not involve request to the eMSP server, eMma shall process the request in less than 2 seconds.
 \medskip
 \par
 eMci, like eMma, shall process the transaction in less than 2 seconds for all those operations that do not require communication with the rest of the eMSP.
 \medskip
 \par
-The CPMS dynamical performance requirements regarding the changing of the cost of charging, the usage of energy stored in batteries, and concluding purchase agreements with a new DSO may be fundamental for the economy of the business, so the operations regarding this aspect of managing the charging station shall be processed as soon as possible, in sub-second time after the CPO confirms the transaction. Furthermore the time required by the CPMS to unlock and start the charging process from a charger shall not be greater than 10s. 
+The CPMS dynamical performance requirements regarding the changing of the cost of charging, the usage of energy stored in batteries, and concluding purchase agreements with a new DSO may be fundamental for the economy of the business, so the operations regarding this aspect of managing the charging station shall be processed as soon as possible, in sub-second time after the CPO confirms the transaction. Furthermore the time required by the CPMS to unlock and start the charging process from a charger shall not be greater than 10S. 

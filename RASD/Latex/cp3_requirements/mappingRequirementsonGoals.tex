@@ -88,14 +88,16 @@ Now we will report all the EVD's goals with the related requirements, implying t
 \paragraph{G1: The EVD is able to identify the charging stations nearby}
 \begin{itemize}
     \item R8: The system shall allow an EVD to view the charging stations on the map
+    \item R16: The system by default must show on the homepage the charging stations on the map territory, centered on the EVD's location
     \item R9: The system shall allow an EVD to view relevant data about the charging stations
     \item R10: The system shall allow an EVD to view relevant data about a specific charging point
     \item R11: The system shall allow an EVD to view the prices of the charging points of the stations
     \item R12: The system shall allow an EVD to view the special offers of the charging points of the stations
     \item R14: The system shall allow an EVD to share his location through the GPS module of his mobile phone
-    \item R16: The system by default must show on the homepage the charging stations on the map territory, centered on the EVD's location
     \item R31: The system must collect the data about the charging stations from the CPOs
 \end{itemize}
+For the EVD to be able to choose a charging station for his EV the system must present a visualization of the available charging stations near his geolocation (R8, R14, R16). To offer this functionality the system must collect information about charging stations provided by their CPO (R31). To be useful for the EVD the system must show a variety of information regarding the charging stations, in particular the tariffs and the socket type of the charging points (R9, R10, R11, R12).
+
 \paragraph{G2: The EVD is able to visualize the tariffs of the charging stations}
 \begin{itemize}
      \item R8: The system shall allow an EVD to view the charging stations on the map
@@ -108,7 +110,8 @@ Now we will report all the EVD's goals with the related requirements, implying t
     \item R16: The system by default must show on the homepage the charging stations on the map territory, centered on the EVD's location
     \item R31: The system must collect the data about the charging stations from the CPOs
 \end{itemize}
-\clearpage
+To achieve this goal, the system must be able to provide the user with a view containing all the relevant information of a charging station (R8, R9, R10, R11, R12). To be able to show this information the system must collect them from the respective owners of the charging stations (R31). Finally this information must be provided based on the user needs (R14, R15, R16).
+
 \paragraph{G3: The EVD is able to visualize any special offer available at the charging station}
 \begin{itemize}
     \item R8: The system shall allow an EVD to view the charging stations on the map
@@ -125,7 +128,7 @@ We can notice that to satisfy the first three goals we need almost the same requ
 The requirements R8-R9-R10-R11-R12-R14-R15-R16-R31 shown in the previous goals are also necessary for the next one.
 
 \paragraph{G4: The EVD is able to book a charge in a specific charging station for a certain time frame}
-To achieve this goal, as already said, are necessary all the requirements that appear in (G1, G2, G3) because before the booking of the charge is firstly necessary to be able to visualize the charging stations and their respective information.\\
+To achieve this goal, as already said, are necessary all the requirements that appear in (G1, G2, G3) because before the booking of the charge is first necessary to be able to visualize the charging stations and their respective information.\\
 After the visualization we have that the following requirements are the mainly ones necessary to really achieve this goal:
 \begin{itemize}
     \item R37: The system must show only the free charging points to book
@@ -143,13 +146,15 @@ After the visualization we have that the following requirements are the mainly o
     \item R40: The system must change the status of the charging point during charging
     \item R67: The system shall allow an EVD to charge the battery until full capacity
 \end{itemize}
+Goal G5 imposes the system to allow all the user that can access the service through eMma to start a charging session by inserting the code shown on the charging point by the eMci terminal (23, 24). If the code is correct the system must unlock the charging point for the user (R41) allowing him to continue charging until the battery is fully charged (R67). Moreover the system must update the status of the charging point from free to occupied (R40).
 
+\clearpage
 \paragraph{G6: The EVD is able to pay for the obtained service}
 \begin{itemize}
     \item R25: The system shall allow an EVD to choose the payment method to use in order to pay for the obtained service
     \item R68: The system must communicate with external APIs to complete the payment
 \end{itemize}
-
+Given the abundance of different payment systems, the eMall must be able to allow the users to choose their preferred method payment (R25) which enforces the usage of the external API, made available by the providers of these kind of services (R68).
 \paragraph{G7: The EVD can manage his bookings and charging sessions}
 \begin{itemize}
     \item R19: The system shall allow a registered EVD to cancel a charging point booking
@@ -159,6 +164,7 @@ After the visualization we have that the following requirements are the mainly o
     \item R63: The system shall allow the registered EVD to view his upcoming bookings
     \item R13: The system shall allow a registered EVD to review a charging station 
 \end{itemize}
+To achieve this goal the EVD must be able to view and cancel a previously booked charging session (R63, R19). Moreover the EVD must be able to view his past charging sessions (R29, R21, R22) and, if he wants, leave a review of the charging stations he has visited (R13).
 
 \paragraph{G8: The EVD can manage and modify his account details (personal data and EVs information)}
 \begin{itemize}
@@ -171,57 +177,61 @@ After the visualization we have that the following requirements are the mainly o
 The last two goals allow the user to manage his account and retrieve some information about how the service is used. We can notice that G7-G8 and G4 are goals related only to the registered EVD, which can take advantage of all the functionalities of the system and have a better experience of the service.
 
 \subsection{Explanation of the mapping on goals regarding the CPO}
-As per the introduction in \ref{sec: Mapping on goals} requirements R27, R51, R52, R53 and R54 are always present for the reasons explained in that section, thus in the following explanations it will be omitted for brevity. We also point out that also the requirements R42, R44, and R55 are always present. These requirements are needed because to to execute any action on the system the CPO needs first to select the charging station in which he wants to execute his action. This objective is realized through the requirements R42 and R55 and the which are:
+As per the introduction in \ref{sec: Mapping on goals} requirements R27, R51, R52, R53 and R54 are always present for the reasons explained in that section, thus in the following explanations it will be omitted for brevity. We also point out that also the requirements R42, R44, and R55 are always present. These requirements are needed because to execute any action on the system the CPO needs first to select the charging station in which he wants to execute his action. This objective is realized through the requirements R42 and R55:
 \begin{itemize}
     \item R42: The system shall allow the CPO to view the charging stations
     \item R55: The system shall allow the CPO to select a charging station
 \end{itemize}
-Moreover we assumed that the CPO executes his operations on an already set-up system, so every operation he makes on a station results in an update of the station details so the requirement R44 is also always present. Having explained this requirement here, they will be not explained any further in the following explanations.
+Moreover we assumed that the CPO executes his operations on an already set-up system, so every operation he makes on a station results in an update of the station details, so the requirement R44 is also always present. Having explained this requirements here, they will not be explained any further in the following parts.
 \paragraph{G9: The CPO can decide from which DSO to acquire energy}
 \begin{itemize}
     \item R30: The system must collect electric energy data from the DSOs
     \item R42: The system shall allow the CPO to view the charging stations
-    \item R44: The system shall allow the CPO to update the details of a charging station
     \item R55: The system shall allow the CPO to select a charging station
+    \item R44: The system shall allow the CPO to update the details of a charging station
     \item R56: The system shall allow the CPO to view the DSO's updated prices for the energy sources
     \item R57: The system shall allow the CPO to view the DSO's special offers for the energy sources
     \item R58: The system shall allow the CPO to change the DSO of a charging station
     \item R59: The system shall allow the CPO to choose the DSO's energy source for the charging station
 \end{itemize}
-
+In order to achieve this goal the CPO must be able to compare the tariffs offered by different DSO (R30, R56, R57). Moreover, the CPO shall be able to select the DSO, from which energy source the electricity provided will be generated (R59). Finally the CPO is able to confirm his choice so it has an effect on the system (R58).
 \paragraph{G10: The CPO can decide the cost of charging}
 \begin{itemize}
     \item R42: The system shall allow the CPO to view the charging stations
+    \item R55: The system shall allow the CPO to select a charging station
     \item R44: The system shall allow the CPO to update the details of a charging station
     \item R49: The system shall allow the CPO to set the price of the charging point
-    \item R55: The system shall allow the CPO to select a charging station
 \end{itemize}
+In order to set the price of a charging point the CPO must be able to select the desired charging station (R42, R55) and set the price for a particular charging point (R44, R49).
 
 \paragraph{G11: The CPO can set special offers}
 \begin{itemize}
     \item R42: The system shall allow the CPO to view the charging stations
+    \item R55: The system shall allow the CPO to select a charging station
     \item R44: The system shall allow the CPO to update the details of a charging station
     \item R49: The system shall allow the CPO to set the price of the charging point
     \item R50: The system shall allow the CPO to set a special offer for the charging point
-    \item R55: The system shall allow the CPO to select a charging station
     \item R60: The system shall allow the CPO to set a special offer for the charging station
 \end{itemize}
+The CPO can set a special offer for an entire station or a particular charging point by inserting the promotion details (R50, R60) and, then, the system must update the prices as per the CPO instructions (R44, R49).
 
 \paragraph{G12: The CPO can decide whether to store or not energy in batteries}
 \begin{itemize}
     \item R42: The system shall allow the CPO to view the charging stations
-    \item R44: The system shall allow the CPO to update the details of a charging station
     \item R55: The system shall allow the CPO to select a charging station
+    \item R44: The system shall allow the CPO to update the details of a charging station  
     \item R65: The system shall allow the CPO to decide if for a charging station wants to store energy from the DSO in the battery of the station
 \end{itemize}
+To achieve this goal the user has only to select the charging station in which he wants to use the battery as an energy source (R42, R55) and then confirm his choice (R44, R65).
+
 \paragraph{G13: The CPO can decide whether to use the energy available in the batteries}
 \begin{itemize}
     \item R42: The system shall allow the CPO to view the charging stations
-    \item R44: The system shall allow the CPO to update the details of a charging station
     \item R55: The system shall allow the CPO to select a charging station
+    \item R44: The system shall allow the CPO to update the details of a charging station
     \item R66: The system shall allow the CPO to decide if for a charging station wants to use the battery or acquire energy from the DSO
 \end{itemize}
-
+To achieve this goal the user has only to select the charging station in which he wants to recharge the battery (R42, R55) and then confirm his choice (R44, R66).
 
 \paragraph{G14: The CPO can manage the charging stations' daily operations}
 To manage the charging stations daily operations the CPO needs all the requirements cited before, because all the other goals contain operations needed in the daily management of the service. Beyond the already mentioned requirements, additional ones are needed to allow the CPO to perform actions that are necessary to manage the system and the events that may occur on daily basis. In particular we considered the following requirements:
@@ -232,5 +242,7 @@ To manage the charging stations daily operations the CPO needs all the requireme
      \item R48: The system shall allow the CPO to add a charging point to a charging station
      \item R61: The system shall allow the CPO to select some criteria to graphically visualize aspects of the charging stations
      \item R62: The system must show a graphical representation of some aspects of the charging stations
+     \item R43: The system shall allow the CPO to view any notification regarding the charging stations
      \item R64: The system shall allow the CPO to select a notification to solve it
 \end{itemize}
+Events that can occur during the natural operation of an EV charging facility business may include the addition or removal of charging points (R47, R48) and the opening of a new charging station (R46) or closing or selling of a previous managed charging station (R46). Moreover the CPO must be able to handle any unexpected event that may happen in a charging station (like charging points fault, maintenance, etc) (R43, R64). Finally the user shall have a way to visualize some graphical data of how business is doing (R61, R62), in order to have the opportunity to improve the service and the earnings of the company, based on an analysis of the provided graphical information.

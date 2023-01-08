@@ -8,7 +8,7 @@
 %
 % Copyright 2021 Politecnico di Milano, Italy. NC-BY
 
-\documentclass{Configuration_Files/PoliMi3i_thesis}
+\documentclass[bibliography=numbered]{Configuration_Files/PoliMi3i_thesis}
 
 %------------------------------------------------------------------------------
 %	REQUIRED PACKAGES AND  CONFIGURATIONS
@@ -72,9 +72,20 @@
 
 % PACKAGES FOR REFERENCES & BIBLIOGRAPHY
 \usepackage[colorlinks=true,linkcolor=black,anchorcolor=black,citecolor=black,filecolor=black,menucolor=black,runcolor=black,urlcolor=black]{hyperref} % Adds clickable links at references
-\usepackage{cleveref}
-\usepackage[square, numbers, sort&compress]{natbib} % Square brackets, citing references with numbers, citations sorted by appearance in the text and compressed
-\bibliographystyle{abbrvnat} % You may use a different style adapted to your field
+%\usepackage{cleveref}
+\usepackage{babel}
+\usepackage[maxcitenames=2, 
+  maxbibnames=99, 
+  backend=biber, 
+  citestyle=authoryear, 
+  bibstyle=authoryear, 
+  sorting=nyt, %sort by name title year 
+  natbib=true,
+  giveninits=true,
+  hyperref
+  ]{biblatex} % CustomBib
+%\usepackage[square, numbers, sort&compress]{natbib} % Square brackets, citing references with numbers, citations sorted by appearance in the text and compressed
+%\bibliographystyle{abbrvnat} % You may use a different style adapted to your field
 
 % OTHER PACKAGES
 \usepackage{pdfpages} % To include a pdf file
@@ -96,7 +107,7 @@
 \newcommand{\bea}{\begin{eqnarray}} % Shortcut for equation arrays
 \newcommand{\eea}{\end{eqnarray}}
 \newcommand{\e}[1]{\times 10^{#1}}  % Powers of 10 notation
-
+\bibliography{bibliography.bib}
 %----------------------------------------------------------------------------
 %	BEGIN OF YOUR DOCUMENT
 %----------------------------------------------------------------------------
@@ -162,11 +173,11 @@
 \label{ch:chapter_five}%
 \input{effort.tex}
 
-\chapter{References}
-
+%\chapter{References}
+%\renewcommand{\bibname}{Whatever floats your boat}
 \nocite{*}
 %\bibliographystyle{plain}
-\bibliography{bibliography}
+\printbibliography[heading=bibnumbered, title={References}]
 \label{ch:chapter_six}%
 
 % LIST OF FIGURES
